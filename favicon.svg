@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 背景円 -->
+  <circle cx="32" cy="32" r="30" fill="#1a1a2e" stroke="#c9a84c" stroke-width="2"/>
+  <!-- 剣1（左上→右下） -->
+  <g transform="rotate(-45 32 32)">
+    <rect x="30" y="8" width="4" height="36" rx="1" fill="#c9a84c"/>
+    <rect x="24" y="38" width="16" height="4" rx="1" fill="#c9a84c"/>
+    <polygon points="32,6 28,12 36,12" fill="#c9a84c"/>
+  </g>
+  <!-- 剣2（右上→左下） -->
+  <g transform="rotate(45 32 32)">
+    <rect x="30" y="8" width="4" height="36" rx="1" fill="#d4af5a"/>
+    <rect x="24" y="38" width="16" height="4" rx="1" fill="#d4af5a"/>
+    <polygon points="32,6 28,12 36,12" fill="#d4af5a"/>
+  </g>
+</svg>

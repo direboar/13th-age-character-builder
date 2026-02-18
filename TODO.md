@@ -37,7 +37,7 @@
   - [x] 2-a. GitHub Pagesの有効化（Settings → Pages → ソース設定）
   - [x] 2-b. デプロイワークフロー作成（`.github/workflows/static.yml`）
   - [x] 2-c. 不要ファイルのデプロイ除外（`tests/`, `fonts/`, `TODO.md`）
-  - [ ] 2-d. OGP/メタタグ・favicon追加（公開URL用）
+  - [x] 2-d. OGP/メタタグ・favicon追加（公開URL用）
   - [x] 2-e. デプロイ確認・全機能テスト
 
 ### 3. 言語切り替え機能の完全実装
