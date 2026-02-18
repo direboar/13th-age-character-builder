@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13th Age キャラクタービルダー</title>
+    <meta name="description" content="13th Age RPGのキャラクタービルダー。種族・クラス選択から能力値計算、PDF出力まで対応。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/wizard.css">
+    <link rel="stylesheet" href="css/sheet.css">
+    <link rel="stylesheet" href="css/lang.css">
+    <!-- html2pdf.js for PDF generation (includes html2canvas + jsPDF) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+    <!-- ヘッダー -->
+    <header class="app-header">
+        <div class="header-brand">
+            <span class="header-logo">⚔</span>
+            <div class="header-title-group">
+                <h1 class="header-title">13th Age</h1>
+                <span class="header-subtitle">キャラクタービルダー</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <div class="header-character-summary" id="characterSummary">
+                <span class="summary-item" id="summaryName">—</span>
+                <span class="summary-sep">|</span>
+                <span class="summary-item" id="summaryRace">種族未選択</span>
+                <span class="summary-sep">|</span>
+                <span class="summary-item" id="summaryClass">クラス未選択</span>
+                <span class="summary-sep">|</span>
+                <span class="summary-item" id="summaryLevel">LV 1</span>
+            </div>
+        </div>
+        <div class="header-actions">
+            <button class="lang-toggle-btn" id="langToggleBtn" onclick="Lang.toggle()" title="Switch to English">
+                🇬🇧 EN
+            </button>
+        </div>
+    </header>
+
+    <!-- メインレイアウト -->
+    <div class="app-layout">
+        <!-- サイドナビゲーション -->
+        <nav class="wizard-nav" id="wizardNav">
+            <div class="nav-title">作成ステップ</div>
+            <ul class="nav-steps" id="navSteps">
+                <li class="nav-step active" data-step="1" id="navStep1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">種族選択</span>
+                    <span class="step-check">✓</span>
+                </li>
+                <li class="nav-step" data-step="2" id="navStep2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">クラス選択</span>
+                    <span class="step-check">✓</span>
+                </li>
+                <li class="nav-step" data-step="3" id="navStep3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">能力値決定</span>
+                    <span class="step-check">✓</span>
+                </li>
+                <li class="nav-step" data-step="4" id="navStep4">
+                    <span class="step-number">4</span>
+                    <span class="step-label">タレント選択</span>
+                    <span class="step-check">✓</span>
+                </li>
+                <li class="nav-step" data-step="5" id="navStep5">
+                    <span class="step-number">5</span>
+                    <span class="step-label">呪文/パワー</span>
+                    <span class="step-check">✓</span>
+                </li>
+                <li class="nav-step" data-step="6" id="navStep6">
+                    <span class="step-number">6</span>
+                    <span class="step-label">バックグラウンド</span>
+                    <span class="step-check">✓</span>
+                </li>
+                <li class="nav-step" data-step="7" id="navStep7">
+                    <span class="step-number">7</span>
+                    <span class="step-label">Icon関係</span>
+                    <span class="step-check">✓</span>
+                </li>
+                <li class="nav-step" data-step="8" id="navStep8">
+                    <span class="step-number">8</span>
+                    <span class="step-label">詳細情報</span>
+                    <span class="step-check">✓</span>
+                </li>
+                <li class="nav-step" data-step="9" id="navStep9">
+                    <span class="step-number">9</span>
+                    <span class="step-label">完成・出力</span>
+                    <span class="step-check">✓</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- メインコンテンツ -->
+        <main class="wizard-main" id="wizardMain">
+            <!-- ステップコンテンツがここに動的に挿入される -->
+            <div id="stepContainer"></div>
+
+            <!-- ナビゲーションボタン -->
+            <div class="wizard-footer" id="wizardFooter">
+                <button class="btn btn-secondary" id="btnPrev" onclick="app.prevStep()" disabled>
+                    ← 前へ
+                </button>
+                <div class="footer-step-info">
+                    ステップ <span id="currentStepNum">1</span> / 9
+                </div>
+                <button class="btn btn-primary" id="btnNext" onclick="app.nextStep()">
+                    次へ →
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- ローディングオーバーレイ -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <p class="loading-text">読み込み中...</p>
+        </div>
+    </div>
+
+    <!-- トースト通知 -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- JavaScriptモジュール -->
+    <script src="js/lang.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/steps/step-race.js"></script>
+    <script src="js/steps/step-class.js"></script>
+    <script src="js/steps/step-abilities.js"></script>
+    <script src="js/steps/step-talents.js"></script>
+    <script src="js/steps/step-spells.js"></script>
+    <script src="js/steps/step-backgrounds.js"></script>
+    <script src="js/steps/step-icons.js"></script>
+    <script src="js/steps/step-details.js"></script>
+    <script src="js/steps/step-summary.js"></script>
+    <script src="js/pdf-generator.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

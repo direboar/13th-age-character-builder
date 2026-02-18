@@ -1,0 +1,119 @@
+[
+  {
+    "id": "archmage",
+    "name": "The Archmage",
+    "nameJa": "大魔法使い",
+    "alignment": "good",
+    "alignmentJa": "善",
+    "description": "The most powerful wizard in the Dragon Empire, the Archmage is dedicated to the forces of order and civilization.",
+    "descriptionJa": "ドラゴン帝国で最も強力な魔法使い。秩序と文明の力に捧げられた存在。"
+  },
+  {
+    "id": "crusader",
+    "name": "The Crusader",
+    "nameJa": "十字軍",
+    "alignment": "evil",
+    "alignmentJa": "悪",
+    "description": "The dark god of war commands armies of dark paladins, anti-paladins, and blackguards.",
+    "descriptionJa": "戦争の暗黒神。ダークパラディン、アンチパラディン、ブラックガードの軍を率いる。"
+  },
+  {
+    "id": "diabolist",
+    "name": "The Diabolist",
+    "nameJa": "悪魔術師",
+    "alignment": "chaotic-evil",
+    "alignmentJa": "混沌・悪",
+    "description": "The Diabolist controls the demons and devils that pour into the world from the Abyss and Hell.",
+    "descriptionJa": "奈落と地獄から世界に流れ込む悪魔と魔神を支配する。"
+  },
+  {
+    "id": "dwarf-king",
+    "name": "The Dwarf King",
+    "nameJa": "ドワーフ王",
+    "alignment": "good",
+    "alignmentJa": "善",
+    "description": "The Dwarf King rules the dwarves and their underground kingdoms, and is a staunch ally against the dark.",
+    "descriptionJa": "ドワーフとその地下王国を統治し、闇に対する強固な同盟者。"
+  },
+  {
+    "id": "elf-queen",
+    "name": "The Elf Queen",
+    "nameJa": "エルフ女王",
+    "alignment": "good",
+    "alignmentJa": "善",
+    "description": "The Elf Queen rules the elves and their forests, and is a powerful force for good in the world.",
+    "descriptionJa": "エルフとその森を統治し、世界における善の強力な力。"
+  },
+  {
+    "id": "emperor",
+    "name": "The Emperor",
+    "nameJa": "皇帝",
+    "alignment": "ambiguous",
+    "alignmentJa": "曖昧",
+    "description": "The Emperor rules the Dragon Empire, maintaining order and civilization against the forces of chaos.",
+    "descriptionJa": "ドラゴン帝国を統治し、混沌の力に対して秩序と文明を維持する。"
+  },
+  {
+    "id": "great-gold-wyrm",
+    "name": "The Great Gold Wyrm",
+    "nameJa": "偉大なる黄金の竜",
+    "alignment": "good",
+    "alignmentJa": "善",
+    "description": "The Great Gold Wyrm is the most powerful dragon in the world, dedicated to fighting evil.",
+    "descriptionJa": "世界で最も強力なドラゴン。悪と戦うことに捧げられた存在。"
+  },
+  {
+    "id": "high-druid",
+    "name": "The High Druid",
+    "nameJa": "大ドルイド",
+    "alignment": "ambiguous",
+    "alignmentJa": "曖昧",
+    "description": "The High Druid is the most powerful druid in the world, dedicated to the forces of nature.",
+    "descriptionJa": "世界で最も強力なドルイド。自然の力に捧げられた存在。"
+  },
+  {
+    "id": "lich-king",
+    "name": "The Lich King",
+    "nameJa": "リッチ王",
+    "alignment": "evil",
+    "alignmentJa": "悪",
+    "description": "The Lich King is the most powerful undead in the world, dedicated to the forces of death.",
+    "descriptionJa": "世界で最も強力なアンデッド。死の力に捧げられた存在。"
+  },
+  {
+    "id": "orc-lord",
+    "name": "The Orc Lord",
+    "nameJa": "オーク卿",
+    "alignment": "evil",
+    "alignmentJa": "悪",
+    "description": "The Orc Lord commands the orc hordes and is a constant threat to civilization.",
+    "descriptionJa": "オークの大群を率い、文明への絶え間ない脅威となる存在。"
+  },
+  {
+    "id": "priestess",
+    "name": "The Priestess",
+    "nameJa": "女祭司",
+    "alignment": "good",
+    "alignmentJa": "善",
+    "description": "The Priestess is the most powerful cleric in the world, dedicated to the forces of good.",
+    "descriptionJa": "世界で最も強力なクレリック。善の力に捧げられた存在。"
+  },
+  {
+    "id": "prince-of-shadows",
+    "name": "The Prince of Shadows",
+    "nameJa": "影の王子",
+    "alignment": "ambiguous",
+    "alignmentJa": "曖昧",
+    "description": "The Prince of Shadows is the most powerful thief in the world, dedicated to the forces of chaos.",
+    "descriptionJa": "世界で最も強力な盗賊。混沌の力に捧げられた存在。"
+  },
+  {
+    "id": "three",
+    "name": "The Three",
+    "nameJa": "三竜",
+    "alignment": "evil",
+    "alignmentJa": "悪",
+    "description": "The Three are the most powerful evil dragons in the world, dedicated to the forces of chaos and destruction.",
+    "descriptionJa": "世界で最も強力な邪悪なドラゴン3体。混沌と破壊の力に捧げられた存在。"
+  }
+]

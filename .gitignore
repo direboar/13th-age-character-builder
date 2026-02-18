@@ -1,0 +1,16 @@
+# OS生成ファイル
+Thumbs.db
+Desktop.ini
+.DS_Store
+# エディタ・IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+# Gemini / AI ツール
+.gemini/
+# 一時ファイル・ビルド成果物
+*.log
+node_modules/
+# テスト失敗時の出力（必要に応じて除外）
+failure/

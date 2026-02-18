@@ -1,0 +1,179 @@
+[
+  {
+    "id": "human",
+    "name": "Human",
+    "nameJa": "人間",
+    "abilityBonus": ["STR", "CON", "DEX", "INT", "WIS", "CHA"],
+    "abilityBonusNote": "任意の1つの能力値に+2",
+    "abilityBonusNoteJa": "任意の1つの能力値に+2",
+    "abilityBonusCount": 1,
+    "racialPower": {
+      "name": "Quick to Fight",
+      "nameJa": "素早い戦闘開始",
+      "description": "At the start of each battle, roll initiative twice and use either result. This means you can be the first to act in a battle, or you can delay your action until later in the round.",
+      "descriptionJa": "各戦闘の開始時に、イニシアチブを2回振り、どちらかの結果を使用します。これにより、戦闘で最初に行動したり、ラウンドの後半まで行動を遅らせることができます。",
+      "feats": [
+        {
+          "tier": "adventurer",
+          "description": "Once per day, you can use Quick to Fight after you've already rolled initiative (switching to the better of the two rolls).",
+          "descriptionJa": "1日1回、イニシアチブを振った後でも「素早い戦闘開始」を使用できます（2つのロールのうち良い方に切り替えます）。"
+        }
+      ]
+    },
+    "racialFeats": [
+      {
+        "name": "Skilled",
+        "nameJa": "熟練",
+        "tier": "adventurer",
+        "description": "You gain a +2 bonus to skill checks using one background of your choice.",
+        "descriptionJa": "選択した1つのバックグラウンドを使用するスキルチェックに+2ボーナスを得ます。"
+      }
+    ]
+  },
+  {
+    "id": "dwarf",
+    "name": "Dwarf",
+    "nameJa": "ドワーフ",
+    "abilityBonus": ["CON", "WIS"],
+    "abilityBonusNote": "ConstitutionまたはWisdomに+2",
+    "abilityBonusNoteJa": "【耐久力】または【判断力】に+2",
+    "abilityBonusCount": 1,
+    "racialPower": {
+      "name": "That's Your Best Shot?",
+      "nameJa": "それが最善の一撃か？",
+      "description": "Once per battle, when you are hit by an attack, you can use this power as a free action. Until the end of your next turn, you take half damage from all attacks.",
+      "descriptionJa": "1戦闘に1回、攻撃を受けたとき、フリーアクションとしてこのパワーを使用できます。次のターン終了まで、すべての攻撃から受けるダメージが半分になります。",
+      "feats": [
+        {
+          "tier": "adventurer",
+          "description": "The effect lasts until the end of the battle instead.",
+          "descriptionJa": "効果が戦闘終了まで持続するようになります。"
+        },
+        {
+          "tier": "champion",
+          "description": "You can use the power twice per battle.",
+          "descriptionJa": "1戦闘に2回使用できるようになります。"
+        }
+      ]
+    },
+    "racialFeats": [
+      {
+        "name": "Dwarven Resilience",
+        "nameJa": "ドワーフの回復力",
+        "tier": "adventurer",
+        "description": "Once per day, you can use a recovery as a quick action (instead of a standard action).",
+        "descriptionJa": "1日1回、スタンダードアクションではなくクイックアクションとしてリカバリーを使用できます。"
+      }
+    ]
+  },
+  {
+    "id": "high-elf",
+    "name": "High Elf",
+    "nameJa": "ハイエルフ",
+    "abilityBonus": ["INT", "CHA"],
+    "abilityBonusNote": "IntelligenceまたはCharismaに+2",
+    "abilityBonusNoteJa": "【知力】または【魅力】に+2",
+    "abilityBonusCount": 1,
+    "racialPower": {
+      "name": "Highblood Teleport",
+      "nameJa": "高貴な血のテレポート",
+      "description": "Once per battle, as a move action, you can teleport to a nearby location you can see.",
+      "descriptionJa": "1戦闘に1回、ムーブアクションとして、見える近くの場所にテレポートできます。",
+      "feats": [
+        {
+          "tier": "adventurer",
+          "description": "Your Highblood Teleport can now be used to teleport to a far away location you can see.",
+          "descriptionJa": "「高貴な血のテレポート」で、見える遠くの場所にテレポートできるようになります。"
+        },
+        {
+          "tier": "champion",
+          "description": "You can now use Highblood Teleport twice per battle.",
+          "descriptionJa": "1戦闘に2回使用できるようになります。"
+        }
+      ]
+    },
+    "racialFeats": [
+      {
+        "name": "Elven Grace",
+        "nameJa": "エルフの優雅さ",
+        "tier": "adventurer",
+        "description": "You gain a +2 bonus to all defenses against attacks from mooks.",
+        "descriptionJa": "雑魚（Mook）からの攻撃に対するすべての防御値に+2ボーナスを得ます。"
+      }
+    ]
+  },
+  {
+    "id": "wood-elf",
+    "name": "Wood Elf",
+    "nameJa": "ウッドエルフ",
+    "abilityBonus": ["DEX", "WIS"],
+    "abilityBonusNote": "DexterityまたはWisdomに+2",
+    "abilityBonusNoteJa": "【敏捷力】または【判断力】に+2",
+    "abilityBonusCount": 1,
+    "racialPower": {
+      "name": "Elven Grace",
+      "nameJa": "エルフの恵み",
+      "description": "At the start of each of your turns, roll a die to see if you get an extra standard action. If your roll is equal to or lower than the escalation die, you get an extra standard action that turn.\n\nAt the start of battle, you roll a d6. Each time you successfully gain an extra action, the size of the die you roll increases by one step on the following progression: (d4), d6, d8, d10, d12, d20. If you get an extra action after rolling a d20, you can't get any more extra actions that battle.",
+      "descriptionJa": "各ターンの開始時に、追加のスタンダードアクションを得られるかどうかを確認するためにダイスを振ります。出目がエスカレーションダイスと同じかそれ以下だった場合、そのターンに追加のスタンダードアクションを1回獲得できます。\n\n戦闘開始時にd6を振ります。追加アクションを獲得するたびに、振るダイスのサイズが以下の順で1段階ずつ増加します：d6、d8、d10、d12、d20。d20を振った後に追加アクションを獲得した場合、その戦闘ではそれ以上追加アクションを獲得できません。",
+      "feats": [
+        {
+          "tier": "champion",
+          "description": "Once per day, start a battle rolling a d4 for elven grace instead of a d6.",
+          "descriptionJa": "1日1回、戦闘開始時にd6の代わりにd4を振ることができます。"
+        }
+      ]
+    },
+    "racialFeats": [
+      {
+        "name": "Heritage of the Sword",
+        "nameJa": "剣の伝統",
+        "tier": "adventurer",
+        "description": "If you can already use swords that deal d6 and d8 damage without attack penalties, you gain a +2 damage bonus with them. Otherwise, if your class would ordinarily have an attack penalty with such swords, you can now use them without penalties.",
+        "descriptionJa": "d6やd8ダメージの剣をペナルティなく使用できる場合、それらで+2ダメージボーナスを得ます。そうでない場合、クラスで通常ペナルティがある剣をペナルティなく使用できます。"
+      },
+      {
+        "name": "Elven Archery",
+        "nameJa": "エルフの弓術",
+        "tier": "adventurer",
+        "description": "You can use bows without attack penalty. When you wield a bow that you can already use without attack penalty from your class, you can reroll any natural 2s on attack rolls with it.",
+        "descriptionJa": "弓をペナルティなく使用できます。クラスですでにペナルティなく使用できる弓を持つ場合、攻撃ロールで出た2の目を振り直せます。"
+      }
+    ]
+  },
+  {
+    "id": "half-orc",
+    "name": "Half-Orc",
+    "nameJa": "ハーフオーク",
+    "abilityBonus": ["STR", "DEX"],
+    "abilityBonusNote": "StrengthまたはDexterityに+2",
+    "abilityBonusNoteJa": "【筋力】または【敏捷力】に+2",
+    "abilityBonusCount": 1,
+    "racialPower": {
+      "name": "Lethal",
+      "nameJa": "致命的",
+      "description": "Once per battle, reroll a melee attack and use the result you prefer.",
+      "descriptionJa": "1戦闘に1回、近接攻撃を振り直し、好きな方の結果を使用できます。",
+      "feats": [
+        {
+          "tier": "adventurer",
+          "description": "You can use Lethal with a ranged attack instead of a melee attack.",
+          "descriptionJa": "近接攻撃の代わりに遠距離攻撃に「致命的」を使用できます。"
+        },
+        {
+          "tier": "champion",
+          "description": "Once per day, you can use Lethal twice in the same battle.",
+          "descriptionJa": "1日1回、同じ戦闘で「致命的」を2回使用できます。"
+        }
+      ]
+    },
+    "racialFeats": [
+      {
+        "name": "Orcish Ferocity",
+        "nameJa": "オークの獰猛さ",
+        "tier": "adventurer",
+        "description": "Once per day, when you drop to 0 hp or below, you can make a basic attack before you fall unconscious.",
+        "descriptionJa": "1日1回、HPが0以下になったとき、意識を失う前に基本攻撃を1回行えます。"
+      }
+    ]
+  }
+]

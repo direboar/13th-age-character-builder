@@ -1,0 +1,168 @@
+/* ===================================================
+   lang.css — 言語切り替えUIスタイル
+   =================================================== */
+
+/* --- ヘッダーレイアウト調整 --- */
+.header-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+/* --- 言語切り替えボタン --- */
+.lang-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(201, 168, 76, 0.1);
+    border: 1px solid var(--color-gold-dark);
+    border-radius: var(--radius-full);
+    color: var(--color-gold-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    letter-spacing: 0.05em;
+}
+
+.lang-toggle-btn:hover {
+    background: rgba(201, 168, 76, 0.2);
+    border-color: var(--color-gold-primary);
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.3);
+}
+
+/* --- 英語原文の折りたたみ --- */
+.en-details {
+    margin-top: var(--space-2);
+}
+
+.en-summary {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    user-select: none;
+    padding: 4px 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color var(--transition-fast);
+}
+
+.en-summary:hover {
+    color: var(--color-text-secondary);
+}
+
+.en-summary::marker,
+.en-summary::-webkit-details-marker {
+    display: none;
+}
+
+.en-details[open] .en-summary {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+}
+
+/* --- 計算式パネル --- */
+.formula-panel {
+    background: rgba(201, 168, 76, 0.04);
+    border: 1px solid var(--color-border-gold);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin-top: var(--space-6);
+}
+
+.formula-panel-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    color: var(--color-gold-primary);
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.formula-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+}
+
+.formula-card {
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+}
+
+.formula-stat-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    color: var(--color-gold-primary);
+    margin-bottom: var(--space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.formula-expression {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    font-family: monospace;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-2);
+}
+
+.formula-result {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--color-text-primary);
+}
+
+.formula-result-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+.formula-abilities-used {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: var(--space-2);
+}
+
+.formula-ability-tag {
+    font-size: var(--text-xs);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+.formula-ability-tag.middle {
+    background: rgba(201, 168, 76, 0.2);
+    color: var(--color-gold-primary);
+    border: 1px solid var(--color-gold-dark);
+}
+
+.formula-ability-tag.normal {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+}
+
+.formula-note {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-top: var(--space-2);
+    font-style: italic;
+}

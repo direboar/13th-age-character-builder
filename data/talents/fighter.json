@@ -1,0 +1,188 @@
+{
+    "classId": "fighter",
+    "talents": [
+        {
+            "id": "cleave",
+            "name": "Cleave",
+            "nameJa": "薙ぎ払い",
+            "description": "Once per battle, make a melee attack as a free action after you drop a non-mook enemy to 0 hp with a melee attack.",
+            "descriptionJa": "1戦闘に1回、近接攻撃で雑魚でない敵をHP0にした後、フリーアクションとして近接攻撃を行えます。",
+            "feats": [
+                {
+                    "tier": "adventurer",
+                    "description": "You can also use Cleave when you drop a mook.",
+                    "descriptionJa": "雑魚を倒したときも「薙ぎ払い」を使用できます。"
+                },
+                {
+                    "tier": "champion",
+                    "description": "You can use Cleave twice per battle.",
+                    "descriptionJa": "1戦闘に2回使用できます。"
+                },
+                {
+                    "tier": "epic",
+                    "description": "You can use Cleave as many times as you want per battle.",
+                    "descriptionJa": "1戦闘に何度でも使用できます。"
+                }
+            ]
+        },
+        {
+            "id": "comeback-strike",
+            "name": "Comeback Strike",
+            "nameJa": "反撃の一撃",
+            "description": "Once per battle as a free action, make a melee attack after you miss with a melee attack.",
+            "descriptionJa": "1戦闘に1回、近接攻撃を外した後、フリーアクションとして近接攻撃を行えます。",
+            "feats": [
+                {
+                    "tier": "adventurer",
+                    "description": "You gain a +2 attack bonus with the Comeback Strike attack.",
+                    "descriptionJa": "「反撃の一撃」の攻撃に+2の攻撃ボーナスを得ます。"
+                },
+                {
+                    "tier": "champion",
+                    "description": "You can use Comeback Strike twice per battle.",
+                    "descriptionJa": "1戦闘に2回使用できます。"
+                }
+            ]
+        },
+        {
+            "id": "heavy-warrior",
+            "name": "Heavy Warrior",
+            "nameJa": "重装戦士",
+            "description": "Once per battle, when you hit with a melee attack, you can deal extra damage equal to your Constitution modifier.",
+            "descriptionJa": "1戦闘に1回、近接攻撃が命中したとき、【耐久力】修正値と同じ追加ダメージを与えられます。",
+            "feats": [
+                {
+                    "tier": "adventurer",
+                    "description": "You can use Heavy Warrior once per round instead of once per battle.",
+                    "descriptionJa": "1戦闘に1回ではなく、1ラウンドに1回使用できます。"
+                },
+                {
+                    "tier": "champion",
+                    "description": "The extra damage is now double your Constitution modifier.",
+                    "descriptionJa": "追加ダメージが【耐久力】修正値の2倍になります。"
+                }
+            ]
+        },
+        {
+            "id": "power-attack",
+            "name": "Power Attack",
+            "nameJa": "渾身の一撃",
+            "description": "Once per battle, you can add a +1d6 bonus to a melee attack's damage roll. The bonus increases to +2d6 at 5th level and +3d6 at 8th level.",
+            "descriptionJa": "1戦闘に1回、近接攻撃のダメージロールに+1d6のボーナスを加えられます。5レベルで+2d6、8レベルで+3d6に増加します。",
+            "feats": [
+                {
+                    "tier": "adventurer",
+                    "description": "You can use Power Attack twice per battle.",
+                    "descriptionJa": "1戦闘に2回使用できます。"
+                },
+                {
+                    "tier": "champion",
+                    "description": "You can use Power Attack with ranged attacks.",
+                    "descriptionJa": "遠距離攻撃にも「渾身の一撃」を使用できます。"
+                }
+            ]
+        },
+        {
+            "id": "skilled-intercept",
+            "name": "Skilled Intercept",
+            "nameJa": "熟練の迎撃",
+            "description": "Once per round as a free action, make a normal save (11+) to intercept an enemy that is moving to attack one of your nearby allies. If you succeed, the enemy attacks you instead.",
+            "descriptionJa": "1ラウンドに1回、フリーアクションとして通常セーブ（11+）を行い、近くの仲間を攻撃しようとしている敵を迎撃できます。成功すると、敵はあなたを攻撃します。",
+            "feats": [
+                {
+                    "tier": "adventurer",
+                    "description": "You gain a +2 bonus to the Skilled Intercept save.",
+                    "descriptionJa": "「熟練の迎撃」のセーブに+2ボーナスを得ます。"
+                },
+                {
+                    "tier": "champion",
+                    "description": "When you intercept an enemy, you can make a free attack against it.",
+                    "descriptionJa": "敵を迎撃したとき、その敵に対してフリー攻撃を行えます。"
+                }
+            ]
+        },
+        {
+            "id": "tough-as-iron",
+            "name": "Tough as Iron",
+            "nameJa": "鉄のような頑強さ",
+            "description": "Once per battle, when you take damage, you can reduce that damage by an amount equal to your Constitution modifier.",
+            "descriptionJa": "1戦闘に1回、ダメージを受けたとき、【耐久力】修正値と同じ量だけそのダメージを軽減できます。",
+            "feats": [
+                {
+                    "tier": "adventurer",
+                    "description": "You can use Tough as Iron twice per battle.",
+                    "descriptionJa": "1戦闘に2回使用できます。"
+                },
+                {
+                    "tier": "champion",
+                    "description": "The damage reduction is now double your Constitution modifier.",
+                    "descriptionJa": "ダメージ軽減が【耐久力】修正値の2倍になります。"
+                }
+            ]
+        }
+    ],
+    "maneuvers": {
+        "level1": [
+            {
+                "id": "carve-an-opening",
+                "name": "Carve an Opening",
+                "nameJa": "突破口を開く",
+                "type": "flexible",
+                "trigger": "Natural odd roll",
+                "triggerJa": "奇数の出目",
+                "effect": "Your crit range with melee attacks expands by 2 until the end of the battle. This is cumulative.",
+                "effectJa": "戦闘終了まで、近接攻撃のクリット範囲が2拡大します。これは累積します。"
+            },
+            {
+                "id": "deadly-assault",
+                "name": "Deadly Assault",
+                "nameJa": "致死の猛攻",
+                "type": "flexible",
+                "trigger": "Natural 2",
+                "triggerJa": "2の出目",
+                "effect": "Reroll the attack, but keep the new result even if it's worse.",
+                "effectJa": "攻撃を振り直しますが、悪い結果でも新しい出目を使用します。"
+            },
+            {
+                "id": "grim-intent",
+                "name": "Grim Intent",
+                "nameJa": "暗い意図",
+                "type": "flexible",
+                "trigger": "Natural even miss",
+                "triggerJa": "偶数の外れ",
+                "effect": "The next time you make a melee attack this battle, deal +1d4 extra damage on a hit. At 5th level, +2d4; at 8th level, +3d4.",
+                "effectJa": "この戦闘で次に近接攻撃が命中したとき、+1d4の追加ダメージを与えます。5レベルで+2d4、8レベルで+3d4。"
+            },
+            {
+                "id": "heavy-blows",
+                "name": "Heavy Blows",
+                "nameJa": "重い一撃",
+                "type": "flexible",
+                "trigger": "Natural odd miss",
+                "triggerJa": "奇数の外れ",
+                "effect": "You deal damage equal to your level to the target.",
+                "effectJa": "対象にレベルと同じダメージを与えます。"
+            },
+            {
+                "id": "punish-them",
+                "name": "Punish Them",
+                "nameJa": "制裁",
+                "type": "flexible",
+                "trigger": "Natural 16+",
+                "triggerJa": "16以上の出目",
+                "effect": "The target is dazed until the end of your next turn.",
+                "effectJa": "対象は次のターン終了まで朦朧状態になります。"
+            },
+            {
+                "id": "strong-guard",
+                "name": "Strong Guard",
+                "nameJa": "強固な守り",
+                "type": "flexible",
+                "trigger": "Natural even hit",
+                "triggerJa": "偶数の命中",
+                "effect": "A nearby ally gains a +2 bonus to AC until the start of your next turn.",
+                "effectJa": "近くの仲間は次のターン開始まで、ACに+2ボーナスを得ます。"
+            }
+        ]
+    }
+}

@@ -1,0 +1,242 @@
+[
+    {
+        "id": "fighter",
+        "name": "Fighter",
+        "nameJa": "ファイター",
+        "abilityBonus": [
+            "STR",
+            "CON"
+        ],
+        "abilityBonusNoteJa": "【筋力】または【耐久力】に+2（種族ボーナスと異なる能力値）",
+        "baseHP": 8,
+        "baseAC": 15,
+        "basePD": 10,
+        "baseMD": 10,
+        "recoveryDie": "d10",
+        "recoveries": 9,
+        "talentCount": 3,
+        "armorAllowed": [
+            "light",
+            "heavy",
+            "shield"
+        ],
+        "weaponAllowed": [
+            "simple",
+            "martial"
+        ],
+        "meleeAttack": {
+            "ability": "STR",
+            "damageFormula": "WEAPON + STR",
+            "miss": "レベルと同じダメージ"
+        },
+        "rangedAttack": {
+            "ability": "DEX",
+            "damageFormula": "WEAPON + DEX",
+            "miss": "なし"
+        },
+        "classFeatures": [
+            {
+                "name": "Extra Tough",
+                "nameJa": "頑丈",
+                "description": "You start with nine recoveries instead of the usual eight.",
+                "descriptionJa": "通常の8回ではなく9回のリカバリーでゲームを開始します。",
+                "feats": [
+                    {
+                        "tier": "adventurer",
+                        "description": "Increase your total recoveries by 1.",
+                        "descriptionJa": "リカバリーの合計を1増やします。"
+                    }
+                ]
+            },
+            {
+                "name": "Threatening",
+                "nameJa": "威圧的",
+                "description": "Whenever an enemy attempts to disengage from you, it takes a penalty to its check equal to your Dexterity or Constitution modifier, whichever is higher.",
+                "descriptionJa": "敵があなたから離脱しようとするとき、【敏捷力】または【耐久力】の修正値（高い方）のペナルティをチェックに受けます。",
+                "feats": [
+                    {
+                        "tier": "adventurer",
+                        "description": "Whenever an enemy fails to disengage from you, you also deal damage to that enemy equal to your Dexterity or Constitution modifier.",
+                        "descriptionJa": "敵が離脱に失敗したとき、【敏捷力】または【耐久力】の修正値と同じダメージを与えます。"
+                    },
+                    {
+                        "tier": "champion",
+                        "description": "Whenever a non-mook enemy fails to disengage from you, it's vulnerable to your attacks for the rest of the battle.",
+                        "descriptionJa": "雑魚でない敵が離脱に失敗したとき、戦闘の残り時間、その敵はあなたの攻撃に対して脆弱になります。"
+                    }
+                ]
+            }
+        ],
+        "backgroundSuggestions": [
+            "剣士",
+            "傭兵隊長",
+            "海賊",
+            "槍兵",
+            "探検家",
+            "用心棒",
+            "街の衛兵",
+            "元剣闘士",
+            "破産した貴族",
+            "決闘者"
+        ],
+        "description": "Fighters are the masters of melee combat, using their strength and skill to defeat their enemies.",
+        "descriptionJa": "ファイターは近接戦闘の達人で、力と技術を駆使して敵を倒します。"
+    },
+    {
+        "id": "cleric",
+        "name": "Cleric",
+        "nameJa": "クレリック",
+        "abilityBonus": [
+            "WIS",
+            "STR"
+        ],
+        "abilityBonusNoteJa": "【判断力】または【筋力】に+2（種族ボーナスと異なる能力値）",
+        "baseHP": 7,
+        "baseAC": 14,
+        "basePD": 11,
+        "baseMD": 11,
+        "recoveryDie": "d8",
+        "recoveries": 8,
+        "talentCount": 3,
+        "armorAllowed": [
+            "light",
+            "heavy",
+            "shield"
+        ],
+        "weaponAllowed": [
+            "simple"
+        ],
+        "meleeAttack": {
+            "ability": "STR",
+            "damageFormula": "WEAPON + STR",
+            "miss": "レベルと同じダメージ"
+        },
+        "rangedAttack": {
+            "ability": "DEX",
+            "damageFormula": "WEAPON + DEX",
+            "miss": "なし"
+        },
+        "classFeatures": [
+            {
+                "name": "Heal",
+                "nameJa": "治癒",
+                "description": "Once per battle, as a quick action, you can heal yourself or a nearby ally. The target heals using a recovery.",
+                "descriptionJa": "1戦闘に1回、クイックアクションとして自分または近くの仲間を回復させます。対象はリカバリーを使用して回復します。",
+                "feats": [
+                    {
+                        "tier": "adventurer",
+                        "description": "You can now use Heal twice per battle.",
+                        "descriptionJa": "1戦闘に2回使用できるようになります。"
+                    },
+                    {
+                        "tier": "champion",
+                        "description": "When you use Heal, the target can also make a saving throw against one save ends effect.",
+                        "descriptionJa": "「治癒」を使用したとき、対象は「セーブ終了」の効果1つに対してセービングスローを行えます。"
+                    }
+                ]
+            },
+            {
+                "name": "Ritual Magic",
+                "nameJa": "儀式魔法",
+                "description": "Clerics can cast cleric spells as rituals.",
+                "descriptionJa": "クレリックはクレリック呪文を儀式として唱えることができます。"
+            }
+        ],
+        "backgroundSuggestions": [
+            "神殿の司祭",
+            "旅の治癒師",
+            "宗教的な戦士",
+            "修道士",
+            "神聖な探求者",
+            "元異端審問官"
+        ],
+        "description": "Clerics are the servants of the gods, using their divine power to heal allies and smite enemies.",
+        "descriptionJa": "クレリックは神々の使者で、神聖な力を使って仲間を癒し、敵を打ち倒します。"
+    },
+    {
+        "id": "druid",
+        "name": "Druid",
+        "nameJa": "ドルイド",
+        "abilityBonus": [
+            "STR",
+            "DEX",
+            "WIS"
+        ],
+        "abilityBonusNoteJa": "【筋力】、【敏捷力】、または【判断力】に+2（種族ボーナスと異なる能力値）",
+        "baseHP": 7,
+        "baseAC": 10,
+        "basePD": 11,
+        "baseMD": 10,
+        "recoveryDie": "d6",
+        "recoveries": 8,
+        "talentCount": 3,
+        "armorAllowed": [
+            "light"
+        ],
+        "weaponAllowed": [
+            "simple"
+        ],
+        "meleeAttack": {
+            "ability": "STR_OR_DEX",
+            "damageFormula": "WEAPON + STR or DEX",
+            "miss": "レベルと同じダメージ"
+        },
+        "rangedAttack": {
+            "ability": "DEX",
+            "damageFormula": "WEAPON + DEX",
+            "miss": "なし"
+        },
+        "classFeatures": [
+            {
+                "name": "Wilderness Survival",
+                "nameJa": "野生の生存術",
+                "description": "You never get lost in the wilderness and can always find food and water for yourself and your allies.",
+                "descriptionJa": "野生の中で迷子になることはなく、自分と仲間のための食料と水を常に見つけることができます。"
+            }
+        ],
+        "backgroundSuggestions": [
+            "部族の狩人/採集者",
+            "雪崩の予言者",
+            "カルトの信者",
+            "川の案内人",
+            "部族の癒し手",
+            "失敗したシャーマン",
+            "野生の寺院司祭",
+            "神秘の滝の守護者"
+        ],
+        "description": "Druids are the servants of nature, using their primal power to control the elements and commune with animals.",
+        "descriptionJa": "ドルイドは自然の使者で、原初の力を使って元素を操り、動物と交信します。",
+        "circles": [
+            {
+                "id": "animal-companion",
+                "name": "Animal Companion",
+                "nameJa": "動物の仲間"
+            },
+            {
+                "id": "elemental-caster",
+                "name": "Elemental Caster",
+                "nameJa": "元素使い"
+            },
+            {
+                "id": "shifter",
+                "name": "Shifter",
+                "nameJa": "変身者"
+            },
+            {
+                "id": "terrain-caster",
+                "name": "Terrain Caster",
+                "nameJa": "地形使い"
+            },
+            {
+                "id": "warrior-druid",
+                "name": "Warrior Druid",
+                "nameJa": "戦士ドルイド"
+            },
+            {
+                "id": "wild-healer",
+                "name": "Wild Healer",
+                "nameJa": "野生の癒し手"
+            }
+        ]
+    }
+]

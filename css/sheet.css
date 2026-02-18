@@ -1,0 +1,45 @@
+/* ===================================================
+   13th Age キャラクタービルダー — キャラクターシート印刷スタイル
+   =================================================== */
+
+/* --- 印刷プレビュー（画面表示） --- */
+.sheet-preview {
+    background: white;
+    color: #1a1a1a;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- 印刷メディアクエリ --- */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .app-header,
+    .wizard-nav,
+    .wizard-footer,
+    .pdf-buttons,
+    .loading-overlay,
+    .toast-container {
+        display: none !important;
+    }
+
+    .wizard-main {
+        margin-left: 0 !important;
+    }
+
+    #stepContainer {
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .sheet-preview {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+}
