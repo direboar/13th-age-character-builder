@@ -3,37 +3,37 @@
  */
 
 const StepClass = (() => {
-    let classesData = null;
+  let classesData = null;
 
-    const loadData = async () => {
-        if (classesData) return classesData;
-        const response = await fetch('data/classes.json');
-        classesData = await response.json();
-        return classesData;
+  const loadData = async () => {
+    if (classesData) return classesData;
+    const response = await fetch('data/classes.json');
+    classesData = await response.json();
+    return classesData;
+  };
+
+  const getClassIcon = (classId) => {
+    const icons = {
+      'fighter': '⚔️',
+      'cleric': '✝️',
+      'druid': '🌿',
+      'barbarian': '🪓',
+      'bard': '🎵',
+      'ranger': '🏹',
+      'rogue': '🗡️',
+      'wizard': '🔮',
+      'sorcerer': '⚡',
+      'paladin': '🛡️',
     };
+    return icons[classId] || '⚔️';
+  };
 
-    const getClassIcon = (classId) => {
-        const icons = {
-            'fighter': '⚔️',
-            'cleric': '✝️',
-            'druid': '🌿',
-            'barbarian': '🪓',
-            'bard': '🎵',
-            'ranger': '🏹',
-            'rogue': '🗡️',
-            'wizard': '🔮',
-            'sorcerer': '⚡',
-            'paladin': '🛡️',
-        };
-        return icons[classId] || '⚔️';
-    };
+  const render = async () => {
+    const classes = await loadData();
+    const character = CharacterState.get();
+    const selectedClass = character.class;
 
-    const render = async () => {
-        const classes = await loadData();
-        const character = CharacterState.get();
-        const selectedClass = character.class;
-
-        const html = `
+    const html = `
       <div class="step-content">
         <h2 class="section-title">クラスを選択</h2>
         <p class="section-description">
@@ -78,15 +78,15 @@ const StepClass = (() => {
       </div>
     `;
 
-        return html;
-    };
+    return html;
+  };
 
-    const renderClassDetail = (cls, character) => {
-        if (!cls) return '';
+  const renderClassDetail = (cls, character) => {
+    if (!cls) return '';
 
-        const selectedBonus = character.classAbilityBonus;
+    const selectedBonus = character.classAbilityBonus;
 
-        return `
+    return `
       <div class="detail-panel" id="classDetail">
         <div class="detail-panel-title">
           ${getClassIcon(cls.id)} ${cls.name} <span class="text-secondary text-sm">（${cls.nameJa}）</span>
@@ -98,15 +98,15 @@ const StepClass = (() => {
           <p class="text-xs text-muted mb-2">※種族ボーナスと異なる能力値を選択してください</p>
           <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
             ${cls.abilityBonus.map(ability => {
-            const isRacialBonus = character.racialAbilityBonus === ability;
-            return `
+      const isRacialBonus = character.racialAbilityBonus === ability;
+      return `
                 <button class="btn btn-sm ${selectedBonus === ability ? 'btn-primary' : 'btn-secondary'} ${isRacialBonus ? 'btn-ghost' : ''}"
                         onclick="StepClass.selectAbilityBonus('${ability}')"
                         ${isRacialBonus ? 'title="種族ボーナスと同じ能力値は選択できません"' : ''}>
                   ${getAbilityName(ability)}${isRacialBonus ? ' ⚠️' : ''}
                 </button>
               `;
-        }).join('')}
+    }).join('')}
           </div>
         </div>
 
@@ -143,92 +143,171 @@ const StepClass = (() => {
           </div>
         </div>
 
-        <!-- 装備可能なアーマー -->
-        <div class="mt-3 text-sm text-secondary">
-          装備可能アーマー: ${(cls.armorAllowed || []).map(a => getArmorName(a)).join('、')}
+        <!-- 近接攻撃能力値選択（ドルイドなどSTR_OR_DEXの場合） -->
+        ${cls.meleeAttack && cls.meleeAttack.ability === 'STR_OR_DEX' ? `
+          <div class="mb-4 mt-4">
+            <label>近接攻撃の能力値を選択</label>
+            <p class="text-xs text-muted mb-2">※選択する能力値によりリカバリーダイスが変わります（STR: ${cls.recoveryDieAlt?.STR || cls.recoveryDie} / DEX: ${cls.recoveryDieAlt?.DEX || cls.recoveryDie}）</p>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+              <button class="btn btn-sm ${character.meleeAbilityChoice === 'STR' ? 'btn-primary' : 'btn-secondary'}"
+                      onclick="StepClass.selectMeleeAbility('STR')">
+                筋力（STR）→ リカバリー${cls.recoveryDieAlt?.STR || cls.recoveryDie}
+              </button>
+              <button class="btn btn-sm ${character.meleeAbilityChoice === 'DEX' ? 'btn-primary' : 'btn-secondary'}"
+                      onclick="StepClass.selectMeleeAbility('DEX')">
+                敏捷力（DEX）→ リカバリー${cls.recoveryDieAlt?.DEX || cls.recoveryDie}
+              </button>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- 防具選択 -->
+        <div class="mb-4 mt-4">
+          <label>装備する防具を選択</label>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+            <button class="btn btn-sm ${(character.equipment?.armor || 'none') === 'none' ? 'btn-primary' : 'btn-secondary'}"
+                    onclick="StepClass.selectArmor('none')">
+              なし（AC ${cls.armorAC?.none || 10}）
+            </button>
+            ${(cls.armorAllowed || []).includes('light') ? `
+              <button class="btn btn-sm ${character.equipment?.armor === 'light' ? 'btn-primary' : 'btn-secondary'}"
+                      onclick="StepClass.selectArmor('light')">
+                軽装鎧（AC ${cls.armorAC?.light || 12}）
+              </button>
+            ` : ''}
+            ${(cls.armorAllowed || []).includes('heavy') ? `
+              <button class="btn btn-sm ${character.equipment?.armor === 'heavy' ? 'btn-primary' : 'btn-secondary'}"
+                      onclick="StepClass.selectArmor('heavy')">
+                重装鎧（AC ${cls.armorAC?.heavy || 14}）
+              </button>
+            ` : ''}
+          </div>
+          ${(cls.armorAllowed || []).includes('shield') ? `
+            <div style="margin-top:8px;">
+              <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                <input type="checkbox" ${character.equipment?.shield ? 'checked' : ''}
+                       onchange="StepClass.toggleShield(this.checked)">
+                盾を装備（AC +${cls.armorAC?.shield || 1}）
+              </label>
+            </div>
+          ` : ''}
         </div>
       </div>
     `;
+  };
+
+  const getAbilityName = (ability) => {
+    const names = {
+      STR: '筋力', CON: '耐久力', DEX: '敏捷力',
+      INT: '知力', WIS: '判断力', CHA: '魅力'
     };
+    return `${names[ability]}（${ability}）`;
+  };
 
-    const getAbilityName = (ability) => {
-        const names = {
-            STR: '筋力', CON: '耐久力', DEX: '敏捷力',
-            INT: '知力', WIS: '判断力', CHA: '魅力'
-        };
-        return `${names[ability]}（${ability}）`;
-    };
+  const getTierName = (tier) => {
+    const names = { adventurer: '冒険者', champion: '勇者', epic: '英雄' };
+    return names[tier] || tier;
+  };
 
-    const getTierName = (tier) => {
-        const names = { adventurer: '冒険者', champion: '勇者', epic: '英雄' };
-        return names[tier] || tier;
-    };
+  const getArmorName = (armor) => {
+    const names = { light: '軽装鎧', heavy: '重装鎧', shield: '盾', none: 'なし' };
+    return names[armor] || armor;
+  };
 
-    const getArmorName = (armor) => {
-        const names = { light: '軽装鎧', heavy: '重装鎧', shield: '盾', none: 'なし' };
-        return names[armor] || armor;
-    };
+  const selectClass = async (classId) => {
+    const classes = await loadData();
+    const cls = classes.find(c => c.id === classId);
+    if (!cls) return;
 
-    const selectClass = async (classId) => {
-        const classes = await loadData();
-        const cls = classes.find(c => c.id === classId);
-        if (!cls) return;
+    const current = CharacterState.get();
+    const classAbilityBonus = cls.abilityBonus.length === 1
+      ? cls.abilityBonus[0]
+      : (current.class === classId ? current.classAbilityBonus : null);
 
-        const current = CharacterState.get();
-        const classAbilityBonus = cls.abilityBonus.length === 1
-            ? cls.abilityBonus[0]
-            : (current.class === classId ? current.classAbilityBonus : null);
+    CharacterState.update({
+      class: classId,
+      classAbilityBonus,
+      selectedTalents: [], // クラスが変わったらタレントをリセット
+      selectedSpells: [],
+      meleeAbilityChoice: cls.meleeAttack?.ability === 'STR_OR_DEX' ? (current.class === classId ? current.meleeAbilityChoice : null) : null,
+    });
 
-        CharacterState.update({
-            class: classId,
-            classAbilityBonus,
-            selectedTalents: [], // クラスが変わったらタレントをリセット
-            selectedSpells: [],
-        });
+    document.getElementById('summaryClass').textContent = cls.nameJa;
 
-        document.getElementById('summaryClass').textContent = cls.nameJa;
+    const container = document.getElementById('stepContainer');
+    container.innerHTML = await render();
+  };
 
-        const container = document.getElementById('stepContainer');
-        container.innerHTML = await render();
-    };
+  const selectAbilityBonus = (ability) => {
+    const character = CharacterState.get();
+    if (character.racialAbilityBonus === ability) {
+      app.showToast('種族ボーナスと同じ能力値は選択できません', 'error');
+      return;
+    }
+    CharacterState.update({ classAbilityBonus: ability });
 
-    const selectAbilityBonus = (ability) => {
-        const character = CharacterState.get();
-        if (character.racialAbilityBonus === ability) {
-            app.showToast('種族ボーナスと同じ能力値は選択できません', 'error');
-            return;
+    // ボタン状態更新
+    const cls = classesData?.find(c => c.id === character.class);
+    if (cls) {
+      cls.abilityBonus.forEach(ab => {
+        const btn = document.querySelector(`button[onclick="StepClass.selectAbilityBonus('${ab}')"]`);
+        if (btn) {
+          btn.className = `btn btn-sm ${ab === ability ? 'btn-primary' : 'btn-secondary'}`;
         }
-        CharacterState.update({ classAbilityBonus: ability });
+      });
+    }
+  };
 
-        // ボタン状態更新
-        const cls = classesData?.find(c => c.id === character.class);
-        if (cls) {
-            cls.abilityBonus.forEach(ab => {
-                const btn = document.querySelector(`button[onclick="StepClass.selectAbilityBonus('${ab}')"]`);
-                if (btn) {
-                    btn.className = `btn btn-sm ${ab === ability ? 'btn-primary' : 'btn-secondary'}`;
-                }
-            });
-        }
-    };
+  const validate = () => {
+    const character = CharacterState.get();
+    if (!character.class) {
+      app.showToast('クラスを選択してください', 'error');
+      return false;
+    }
+    if (!character.classAbilityBonus) {
+      app.showToast('クラスの能力値ボーナスを選択してください', 'error');
+      return false;
+    }
+    return true;
+  };
 
-    const validate = () => {
-        const character = CharacterState.get();
-        if (!character.class) {
-            app.showToast('クラスを選択してください', 'error');
-            return false;
-        }
-        if (!character.classAbilityBonus) {
-            app.showToast('クラスの能力値ボーナスを選択してください', 'error');
-            return false;
-        }
-        return true;
-    };
+  const getClassData = async (classId) => {
+    const classes = await loadData();
+    return classes.find(c => c.id === classId);
+  };
 
-    const getClassData = async (classId) => {
-        const classes = await loadData();
-        return classes.find(c => c.id === classId);
-    };
+  /**
+   * 防具を選択する
+   */
+  const selectArmor = async (armorType) => {
+    const character = CharacterState.get();
+    CharacterState.update({
+      equipment: { ...character.equipment, armor: armorType }
+    });
+    const container = document.getElementById('stepContainer');
+    container.innerHTML = await render();
+  };
 
-    return { render, selectClass, selectAbilityBonus, validate, getClassData };
+  /**
+   * 盾の装備を切り替える
+   */
+  const toggleShield = async (equipped) => {
+    const character = CharacterState.get();
+    CharacterState.update({
+      equipment: { ...character.equipment, shield: equipped }
+    });
+    const container = document.getElementById('stepContainer');
+    container.innerHTML = await render();
+  };
+
+  /**
+   * 近接攻撃能力値を選択する（ドルイド用）
+   */
+  const selectMeleeAbility = async (ability) => {
+    CharacterState.update({ meleeAbilityChoice: ability });
+    const container = document.getElementById('stepContainer');
+    container.innerHTML = await render();
+  };
+
+  return { render, selectClass, selectAbilityBonus, selectArmor, toggleShield, selectMeleeAbility, validate, getClassData };
 })();

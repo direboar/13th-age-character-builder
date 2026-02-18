@@ -13,7 +13,8 @@ const StepAbilities = (() => {
     };
 
     const POINT_BUY_COSTS = {
-        8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7
+        8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7,
+        15: 8, 16: 10, 17: 13, 18: 16
     };
     const POINT_BUY_TOTAL = 28;
 
@@ -84,8 +85,8 @@ const StepAbilities = (() => {
         const descriptions = {
             pointbuy: `
         <div class="rule-box-title">ポイントバイ</div>
-        <div class="rule-box-content">28ポイントを使って能力値を購入します。能力値8〜14の範囲で設定できます。
-コスト: 8=0pt / 9=1pt / 10=2pt / 11=3pt / 12=4pt / 13=5pt / 14=7pt</div>
+        <div class="rule-box-content">28ポイントを使って能力値を購入します。能力値8〜18の範囲で設定できます。
+コスト: 8=0pt / 9=1pt / 10=2pt / 11=3pt / 12=4pt / 13=5pt / 14=7pt / 15=8pt / 16=10pt / 17=13pt / 18=16pt</div>
       `,
             roll: `
         <div class="rule-box-title">4d6ドロップ最低値</div>
@@ -353,7 +354,7 @@ const StepAbilities = (() => {
     const adjustScore = async (ability, delta) => {
         const character = CharacterState.get();
         const current = character.abilities[ability] || 10;
-        const newScore = Math.max(8, Math.min(14, current + delta));
+        const newScore = Math.max(8, Math.min(18, current + delta));
 
         // ポイントバイの場合、コストチェック
         const newAbilities = { ...character.abilities, [ability]: newScore };

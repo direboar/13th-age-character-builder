@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator テスト — 13th Age Character Builder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Noto Sans JP', sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 24px;
+        }
+
+        .summary {
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .summary h1 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .summary p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .all-pass {
+            background: linear-gradient(135deg, #1b4332, #2d6a4f);
+            border: 1px solid #40916c;
+        }
+
+        .has-fail {
+            background: linear-gradient(135deg, #4a1520, #6b2030);
+            border: 1px solid #a03040;
+        }
+
+        .suite {
+            background: #16213e;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            border: 1px solid #1a1a2e;
+        }
+
+        .suite h2 {
+            padding: 14px 20px;
+            font-size: 1rem;
+            border-bottom: 1px solid #0f3460;
+        }
+
+        .suite.pass h2 {
+            background: #1b4332;
+            color: #95d5b2;
+        }
+
+        .suite.fail h2 {
+            background: #4a1520;
+            color: #f4a0a0;
+        }
+
+        .suite-count {
+            font-weight: normal;
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        .tests {
+            padding: 8px 0;
+        }
+
+        .test {
+            padding: 6px 20px 6px 40px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .test.pass .test-icon {
+            color: #52b788;
+        }
+
+        .test.fail .test-icon {
+            color: #e76f6f;
+        }
+
+        .test-icon {
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .test-name {
+            flex: 1;
+        }
+
+        .test-error {
+            background: #2a0a0a;
+            color: #f4a0a0;
+            font-size: 0.8rem;
+            padding: 6px 10px;
+            border-radius: 6px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test-results">テスト実行中...</div>
+
+    <!-- 本体のモジュールを読み込む -->
+    <script src="../js/calculator.js"></script>
+
+    <!-- テストフレームワーク -->
+    <script src="test-runner.js"></script>
+
+    <!-- テストケース -->
+    <script src="calculator.test.js"></script>
+
+    <!-- テスト実行 -->
+    <script>
+        TestRunner.renderResults();
+    </script>
+</body>
+
+</html>

@@ -90,19 +90,17 @@ const Calculator = (() => {
 
     /**
      * レベルに応じたHP倍率を返す
+     * SRD: LV1=×3, LV2=×4, LV3=×5, ... LV10=×12
      * @param {number} level - レベル
      * @returns {number} 倍率
      */
     const getHPMultiplier = (level) => {
-        if (level <= 1) return 3;
-        if (level <= 4) return 4;
-        if (level <= 7) return 5;
-        return 6;
+        return level + 2;
     };
 
     /**
      * ACを計算する
-     * 計算式: クラスbaseAC + middle(CON, DEX, WIS) + レベル
+     * 計算式: 防具別baseAC + middle(CON, DEX, WIS) + レベル
      * @param {Object} character - キャラクターデータ
      * @param {Object} classData - クラスデータ
      * @returns {number} AC
@@ -111,7 +109,25 @@ const Calculator = (() => {
         if (!classData) return 0;
         const mods = getAllModifiers(character);
         const middleMod = getMiddleValue(mods.CON || 0, mods.DEX || 0, mods.WIS || 0);
-        return classData.baseAC + middleMod + character.level;
+
+        // 防具タイプに応じたbaseACを取得
+        let baseAC = classData.baseAC;
+        if (classData.armorAC && character.equipment) {
+            const armorType = character.equipment.armor || 'none';
+            // そのクラスが装備可能な防具かどうかチェック
+            if (classData.armorAC[armorType] !== undefined) {
+                baseAC = classData.armorAC[armorType];
+            } else {
+                // 装備不可の防具タイプの場合はデフォルト（なし）にフォールバック
+                baseAC = classData.armorAC['none'] || classData.baseAC;
+            }
+            // 盾ボーナスを加算
+            if (character.equipment.shield && classData.armorAC['shield']) {
+                baseAC += classData.armorAC['shield'];
+            }
+        }
+
+        return baseAC + middleMod + character.level;
     };
 
     /**
@@ -167,6 +183,7 @@ const Calculator = (() => {
     /**
      * リカバリーダイスを計算する（表示用）
      * 計算式: レベル × recoveryDie + CON修正値
+     * ドルイドの場合、近接攻撃能力値がSTRならd10、DEXならd6
      * @param {Object} character - キャラクターデータ
      * @param {Object} classData - クラスデータ
      * @returns {string} リカバリーダイス表示文字列
@@ -175,9 +192,24 @@ const Calculator = (() => {
         if (!classData) return '—';
         const mods = getAllModifiers(character);
         const conMod = mods.CON || 0;
-        const die = classData.recoveryDie || 'd8';
+        const die = getRecoveryDie(character, classData);
         const modStr = conMod >= 0 ? `+${conMod}` : `${conMod}`;
         return `${character.level}${die}${modStr}`;
+    };
+
+    /**
+     * 有効なリカバリーダイスを取得する
+     * ドルイドなどrecoveryDieAltを持つクラスの場合、
+     * 近接攻撃能力値の選択に応じてダイスが変わる
+     * @param {Object} character - キャラクターデータ
+     * @param {Object} classData - クラスデータ
+     * @returns {string} ダイス文字列（例: 'd10'）
+     */
+    const getRecoveryDie = (character, classData) => {
+        if (classData.recoveryDieAlt && character.meleeAbilityChoice) {
+            return classData.recoveryDieAlt[character.meleeAbilityChoice] || classData.recoveryDie || 'd8';
+        }
+        return classData.recoveryDie || 'd8';
     };
 
     /**
@@ -250,7 +282,8 @@ const Calculator = (() => {
      */
     const getPointBuyCost = (score) => {
         const costs = {
-            8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7
+            8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7,
+            15: 8, 16: 10, 17: 13, 18: 16
         };
         return costs[score] !== undefined ? costs[score] : -1;
     };
@@ -337,12 +370,14 @@ const Calculator = (() => {
         getEffectiveAbilities,
         getAllModifiers,
         calculateHP,
+        getHPMultiplier,
         calculateAC,
         calculatePD,
         calculateMD,
         calculateInitiative,
         calculateRecoveries,
         getRecoveryDiceString,
+        getRecoveryDie,
         getMeleeAttackBonus,
         getRangedAttackBonus,
         calculateAll,

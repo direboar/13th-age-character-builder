@@ -10,6 +10,12 @@
         "abilityBonusNoteJa": "【筋力】または【耐久力】に+2（種族ボーナスと異なる能力値）",
         "baseHP": 8,
         "baseAC": 15,
+        "armorAC": {
+            "none": 10,
+            "light": 12,
+            "heavy": 15,
+            "shield": 1
+        },
         "basePD": 10,
         "baseMD": 10,
         "recoveryDie": "d10",
@@ -93,6 +99,12 @@
         "abilityBonusNoteJa": "【判断力】または【筋力】に+2（種族ボーナスと異なる能力値）",
         "baseHP": 7,
         "baseAC": 14,
+        "armorAC": {
+            "none": 10,
+            "light": 12,
+            "heavy": 14,
+            "shield": 1
+        },
         "basePD": 11,
         "baseMD": 11,
         "recoveryDie": "d8",
@@ -163,11 +175,20 @@
             "WIS"
         ],
         "abilityBonusNoteJa": "【筋力】、【敏捷力】、または【判断力】に+2（種族ボーナスと異なる能力値）",
-        "baseHP": 7,
+        "baseHP": 6,
         "baseAC": 10,
+        "armorAC": {
+            "none": 10,
+            "light": 12,
+            "shield": 1
+        },
         "basePD": 11,
-        "baseMD": 10,
+        "baseMD": 11,
         "recoveryDie": "d6",
+        "recoveryDieAlt": {
+            "STR": "d10",
+            "DEX": "d6"
+        },
         "recoveries": 8,
         "talentCount": 3,
         "armorAllowed": [

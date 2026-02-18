@@ -15,6 +15,7 @@ const CharacterState = (() => {
     class: null,
     racialAbilityBonus: null,  // 種族ボーナスを付与する能力値
     classAbilityBonus: null,   // クラスボーナスを付与する能力値
+    meleeAbilityChoice: null,  // 近接攻撃能力値の選択（STR or DEX、ドルイド用）
 
     // 能力値
     abilityMethod: 'pointbuy', // 'roll', 'pointbuy', 'base13'
