@@ -30,15 +30,15 @@
 - [ ] Druid（ドルイド）— 基本ステータス、クラス特徴、タレント、Feat
 
 ### 2. GitHub Pages対応
-- **状態**: 🔲 未着手
+- **状態**: 🔄 進行中
 - **概要**: GitHub Pagesで公開可能にする（静的サイトのためビルド不要）
 - **公開URL**: `https://direboar.github.io/13th-age-character-builder/`
 - **サブタスク**:
-  - [ ] 2-a. GitHub Pagesの有効化（Settings → Pages → ソース設定）
-  - [ ] 2-b. デプロイワークフロー作成（`.github/workflows/static.yml`）
-  - [ ] 2-c. 不要ファイルのデプロイ除外（`failure/`等）
+  - [x] 2-a. GitHub Pagesの有効化（Settings → Pages → ソース設定）
+  - [x] 2-b. デプロイワークフロー作成（`.github/workflows/static.yml`）
+  - [x] 2-c. 不要ファイルのデプロイ除外（`tests/`, `fonts/`, `TODO.md`）
   - [ ] 2-d. OGP/メタタグ・favicon追加（公開URL用）
-  - [ ] 2-e. デプロイ確認・全機能テスト
+  - [x] 2-e. デプロイ確認・全機能テスト
 
 ### 3. 言語切り替え機能の完全実装
 - **状態**: 🔲 未着手
