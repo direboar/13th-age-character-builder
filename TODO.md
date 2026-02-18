@@ -29,7 +29,10 @@
 - [ ] Cleric（クレリック）— 基本ステータス、クラス特徴、タレント、Feat
 - [ ] Druid（ドルイド）— 基本ステータス、クラス特徴、タレント、Feat
 
-### 2. 言語切り替え機能の完全実装
+### 2.GITHUB Page対応
+
+
+### 3. 言語切り替え機能の完全実装
 - **状態**: 🔲 未着手
 - **概要**: ヘッダーの🇬🇧/🇯🇵トグルボタンは実装済みだが、各ステップモジュールのテキスト切り替え処理が未実装
 - **対象ファイル**: `js/steps/step-race.js`, `step-class.js`, `step-abilities.js`, `step-talents.js`, `step-spells.js`, `step-backgrounds.js`, `step-icons.js`, `step-details.js`, `step-summary.js`
@@ -38,7 +41,7 @@
   - [ ] 日本語/英語の翻訳テキストを定義
   - [ ] PDF出力時の言語対応
 
-### 3. 追加クラスのデータ実装
+### 4. 追加クラスのデータ実装
 - **状態**: 🔲 未着手
 - **概要**: 現在Fighter/Cleric/Druidの3クラスのみ。SRDに記載のある残りクラスを追加
 - **対象**: `data/classes/`, `data/talents/`
@@ -56,7 +59,7 @@
   - [ ] Sorcerer（ソーサラー）
   - [ ] Wizard（ウィザード）
 
-### 4. 追加種族のデータ実装
+### 5. 追加種族のデータ実装
 - **状態**: 🔲 未着手
 - **概要**: 現在Human/Dwarf/High Elf/Wood Elf/Half-Orcの5種族のみ
 - **対象**: `data/races.json`
