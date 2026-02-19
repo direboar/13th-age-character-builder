@@ -1,11 +1,11 @@
 # 13th Age キャラクタービルダー — タスク管理
 
-> 最終更新: 2026-02-18
+> 最終更新: 2026-02-19
 
 ## 🔴 優先度：高（コア機能）
 
 ### 1. SRDデータの正確性検証
-- **状態**: 🔲 未着手
+- **状態**: 🔲 未着手（1-bのみ完了）
 - **概要**: 実装済みの種族・クラスのデータをSRDのキャラクター作成ルールと照合し、誤りがないか確認する
 - **対象**: `data/races.json`, `data/classes.json`, `data/talents/*.json`, `js/calculator.js`
 
@@ -17,12 +17,12 @@
 - [x] レベルアップ時の能力値上昇ルール
 - [x] HP・AC・PD・MD・イニシアチブ・リカバリーの計算式（`calculator.js`）
 
-#### 1-b. 種族データの検証（`data/races.json`）
-- [ ] Human（人間）— 能力値ボーナス、Quick to Fight、Feat
-- [ ] Dwarf（ドワーフ）— 能力値ボーナス、That's Your Best Shot?、Feat
-- [ ] High Elf（ハイエルフ）— 能力値ボーナス、Highblood Teleport、Feat
-- [ ] Wood Elf（ウッドエルフ）— 能力値ボーナス、Elven Grace、Feat
-- [ ] Half-Orc（ハーフオーク）— 能力値ボーナス、Lethal、Feat
+#### 1-b. 種族データの検証（`data/races.json`）✅ 完了（2026-02-19）
+- [x] Human（人間）— 能力値ボーナス、Quick to Fight、Feat
+- [x] Dwarf（ドワーフ）— 能力値ボーナス、That's Your Best Shot?、Feat
+- [x] High Elf（ハイエルフ）— 能力値ボーナス、Highblood Teleport、Feat
+- [x] Wood Elf（ウッドエルフ）— 能力値ボーナス、Elven Grace、Feat
+- [x] Half-Orc（ハーフオーク）— 能力値ボーナス、Lethal、Feat
 
 #### 1-c. クラスデータの検証（`data/classes.json` + `data/talents/`）
 - [ ] Fighter（ファイター）— 基本ステータス、クラス特徴、タレント、Feat
@@ -37,7 +37,7 @@
   - [x] 2-a. GitHub Pagesの有効化（Settings → Pages → ソース設定）
   - [x] 2-b. デプロイワークフロー作成（`.github/workflows/static.yml`）
   - [x] 2-c. 不要ファイルのデプロイ除外（`tests/`, `fonts/`, `TODO.md`）
-  - [x] 2-d. OGP/メタタグ・favicon追加（公開URL用）
+  - [x] 2-d. OGP/メタタグ・favicon・OGP画像（1200×630）追加（公開URL用）
   - [x] 2-e. デプロイ確認・全機能テスト
 
 ### 3. 言語切り替え機能の完全実装
@@ -109,6 +109,7 @@
   - [ ] CharacterStateにselectedFeatsプロパティを追加
   - [ ] タレント選択画面にFeat選択UIを追加
   - [ ] PDFで取得済み★/未取得☐を切り替え表示
+  - [ ] **Human のボーナスFeat対応**: 1レベルで取得できるFeat数を2にする（`races.json` に `bonusFeat: true` フラグ実装済み。Feat選択UIで種族を参照して上限を変える）
 
 ### 8. 呪文/パワー選択の充実
 - **状態**: 🔲 未着手
