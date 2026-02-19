@@ -24,10 +24,10 @@
 - [x] Wood Elf（ウッドエルフ）— 能力値ボーナス、Elven Grace、Feat
 - [x] Half-Orc（ハーフオーク）— 能力値ボーナス、Lethal、Feat
 
-#### 1-c. クラスデータの検証（`data/classes.json` + `data/talents/`）
-- [ ] Fighter（ファイター）— 基本ステータス、クラス特徴、タレント、Feat
-- [ ] Cleric（クレリック）— 基本ステータス、クラス特徴、タレント、Feat
-- [ ] Druid（ドルイド）— 基本ステータス、クラス特徴、タレント、Feat
+#### 1-c. クラスデータの検証（`data/classes.json` + `data/talents/`）✅ 完了（2026-02-19）
+- [x] Fighter（ファイター）— 基本ステータス、クラス特徴、タレント、Feat
+- [x] Cleric（クレリック）— 基本ステータス、クラス特徴、タレント、Feat
+- [x] Druid（ドルイド）— 基本ステータス、クラス特徴、タレント、Feat
 
 ### 2. GitHub Pages対応
 - **状態**: ✅ 完了

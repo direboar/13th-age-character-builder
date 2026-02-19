@@ -4,172 +4,161 @@
         {
             "id": "animal-companion",
             "name": "Animal Companion",
-            "nameJa": "動物の仲間",
-            "circleId": "animal-companion",
-            "description": "You have an animal companion that fights alongside you in battle. The animal companion acts on your initiative and follows your commands.",
-            "descriptionJa": "戦闘で一緒に戦う動物の仲間がいます。動物の仲間はあなたのイニシアチブで行動し、あなたの命令に従います。",
-            "subOptions": [
-                {
-                    "id": "animal-companion-adept",
-                    "name": "Animal Companion: Adept",
-                    "nameJa": "動物の仲間：熟達者",
-                    "description": "Your animal companion is a 1st level creature. It has the following stats based on your level:\n- AC = 11 + level\n- PD = 10 + level\n- MD = 9 + level\n- HP = (6 + CON modifier) × 3 at 1st level\n- Attack bonus = level + 2 vs AC\n- Damage = d6 + level",
-                    "descriptionJa": "あなたの動物の仲間は1レベルのクリーチャーです。レベルに基づいて以下のステータスを持ちます：\n- AC = 11 + レベル\n- PD = 10 + レベル\n- MD = 9 + レベル\n- HP = (6 + 【耐久力】修正値) × 3（1レベル時）\n- 攻撃ボーナス = レベル + 2 vs AC\n- ダメージ = d6 + レベル"
-                }
-            ],
+            "nameJa": "動物の相棒",
+            "description": "You gain an animal companion that fights alongside you. It has its own actions and stats.",
+            "descriptionJa": "あなたは共に戦う動物の相棒を得ます。相棒は独自のアクションとステータスを持ちます。",
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "Your animal companion gains a +1 bonus to all defenses.",
-                    "descriptionJa": "動物の仲間はすべての防御値に+1ボーナスを得ます。"
+                    "description": "Your animal companion adds the escalation die to its attack rolls.",
+                    "descriptionJa": "動物の相棒は攻撃ロールにエスカレーションダイスの値を加えます。"
                 },
                 {
                     "tier": "champion",
-                    "description": "Your animal companion's attacks deal extra damage equal to your Wisdom modifier.",
-                    "descriptionJa": "動物の仲間の攻撃は【判断力】修正値と同じ追加ダメージを与えます。"
+                    "description": "If your animal companion attacks two different enemies (or the same enemy twice) with its standard action, it must be against enemies that are engaged with you or it.",
+                    "descriptionJa": "動物の相棒は標準アクションで2回攻撃を行えます（同じ敵でも可）。"
+                },
+                {
+                    "tier": "epic",
+                    "description": "Increase your animal companion's AC and PD by +1.",
+                    "descriptionJa": "動物の相棒のACとPDが+1されます（他にも強化あり）。"
+                }
+            ],
+            "subOptions": [
+                {
+                    "id": "companion-bear",
+                    "name": "Bear / Panther",
+                    "nameJa": "熊 / 豹",
+                    "description": "Main stat: Str or Con / Dex or Wis. Strong and tough / Fast and deadly.",
+                    "descriptionJa": "メイン能力：耐久力。頑強で強力。"
+                },
+                {
+                    "id": "companion-wolf",
+                    "name": "Wolf / Raptor",
+                    "nameJa": "狼 / 猛禽",
+                    "description": "Main stat: Str or Dex / Dex or Wis. Pack tactics / Aerial attacks.",
+                    "descriptionJa": "メイン能力：敏捷力。集団戦術や空中攻撃。"
                 }
             ]
         },
         {
             "id": "elemental-caster",
             "name": "Elemental Caster",
-            "nameJa": "元素使い",
-            "circleId": "elemental-caster",
-            "description": "You can cast elemental spells from the Air, Earth, Fire, and Water schools of magic.",
-            "descriptionJa": "風、大地、炎、水の魔法の流派から元素呪文を唱えることができます。",
+            "nameJa": "精霊の術者",
+            "description": "You gain access to elemental spells (Air, Earth, Fire, Water). Choose one element to focus on.",
+            "descriptionJa": "精霊魔法（風、地、火、水）を使用できるようになります。専門とする属性を1つ選んでください（現在はデータ未実装のため、汎用呪文のみ選択可能です）。",
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You gain a +2 bonus to attack rolls with elemental spells.",
-                    "descriptionJa": "元素呪文の攻撃ロールに+2ボーナスを得ます。"
+                    "description": "You can choose a second element to focus on.",
+                    "descriptionJa": "2つ目の専門属性を選べます。"
                 }
             ]
         },
         {
             "id": "shifter",
             "name": "Shifter",
-            "nameJa": "変身者",
-            "circleId": "shifter",
-            "description": "You can shift into animal forms. You have two forms: Scout Form and Beast Form.",
-            "descriptionJa": "動物の形態に変身できます。スカウト形態とビースト形態の2つの形態があります。",
+            "nameJa": "変身",
+            "description": "You can change your shape into a beast form (Scout or Combat).",
+            "descriptionJa": "野獣の姿（斥候形態または戦闘形態）に変身できます。",
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You can shift into Scout Form as a quick action instead of a move action.",
-                    "descriptionJa": "スカウト形態への変身をムーブアクションではなくクイックアクションで行えます。"
+                    "description": "You can shift into a third form (e.g., flight, swim).",
+                    "descriptionJa": "3つ目の形態（飛行、遊泳など）に変身できます。"
                 }
             ]
         },
         {
             "id": "terrain-caster",
             "name": "Terrain Caster",
-            "nameJa": "地形使い",
-            "circleId": "terrain-caster",
-            "description": "You can cast spells that are tied to specific terrain types. You must be in or near the appropriate terrain to cast these spells.",
-            "descriptionJa": "特定の地形タイプに結びついた呪文を唱えることができます。これらの呪文を唱えるには、適切な地形の中または近くにいる必要があります。",
+            "nameJa": "地形の術者",
+            "description": "You can cast spells related to the terrain you are currently in.",
+            "descriptionJa": "現在いる地形に関連した呪文を唱えられます（現在はデータ未実装）。",
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You can use terrain caster spells even when you're not in the appropriate terrain, but you take a -2 penalty to attack rolls.",
-                    "descriptionJa": "適切な地形にいなくても地形使い呪文を使用できますが、攻撃ロールに-2のペナルティを受けます。"
+                    "description": "Your daily terrain spells become recharge 16+.",
+                    "descriptionJa": "地形呪文のデイリー呪文がリチャージ16+になります。"
                 }
             ]
         },
         {
             "id": "warrior-druid",
             "name": "Warrior Druid",
-            "nameJa": "戦士ドルイド",
-            "circleId": "warrior-druid",
-            "description": "You are a druid who focuses on melee combat. You can use one-handed weapons and shields, and your recovery die increases to 1d10.",
-            "descriptionJa": "近接戦闘に特化したドルイドです。片手武器と盾を使用でき、回復ダイスが1d10に増加します。",
-            "bonuses": {
-                "recoveryDie": "d10",
-                "armorAllowed": [
-                    "light",
-                    "shield"
-                ]
-            },
+            "nameJa": "戦士のドルイド",
+            "description": "You can use heavy armor and martial weapons without penalty. You can also use Flexible Attacks (Maneuvers).",
+            "descriptionJa": "重装鎧と軍用武器をペナルティなしで使用できます。また、フレキシブルアタック（マニューバ）も使用できます。",
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You can use two-handed weapons without penalty.",
-                    "descriptionJa": "両手武器をペナルティなく使用できます。"
+                    "description": "Once per battle, you can use a maneuver from the Fighter class.",
+                    "descriptionJa": "1戦闘に1回、ファイターのマニューバを1つ使用できます（要習得）。"
                 }
             ]
         },
         {
             "id": "wild-healer",
             "name": "Wild Healer",
-            "nameJa": "野生の癒し手",
-            "circleId": "wild-healer",
-            "description": "You can use the Heal power as a standard action, and the target heals additional hit points equal to your Wisdom modifier.",
-            "descriptionJa": "「治癒」パワーをスタンダードアクションとして使用でき、対象は【判断力】修正値と同じ追加HPを回復します。",
+            "nameJa": "荒野の癒し手",
+            "description": "You gain the ability to cast 'Wild Healer' spells. You can cast them a number of times per day equal to your Wisdom modifier + Level.",
+            "descriptionJa": "あなたは「荒野の癒し」系呪文を使用できるようになります。1日に【判断力】修正値+レベルの回数だけ使用できます。",
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You can use Wild Healer twice per battle.",
-                    "descriptionJa": "1戦闘に2回使用できます。"
-                },
-                {
-                    "tier": "champion",
-                    "description": "When you use Wild Healer, the target can also make a saving throw against one save ends effect.",
-                    "descriptionJa": "「野生の癒し手」を使用したとき、対象は「セーブ終了」の効果1つに対してセービングスローを行えます。"
+                    "description": "You can use a recovery to cast a Wild Healer spell without expending a daily use.",
+                    "descriptionJa": "リカバリーを消費することで、1日の使用回数を消費せずに「荒野の癒し」呪文を唱えられます。"
                 }
             ]
         }
     ],
     "spells": {
-        "animalCompanion": {
-            "level1": [
-                {
-                    "id": "pack-link",
-                    "name": "Pack Link",
-                    "nameJa": "群れの絆",
-                    "type": "at-will",
-                    "typeJa": "自由",
-                    "target": "Your animal companion",
-                    "targetJa": "あなたの動物の仲間",
-                    "effect": "Until the end of the battle, when your animal companion hits an enemy that you are engaged with, the companion's attack deals +1d6 damage.",
-                    "effectJa": "戦闘終了まで、動物の仲間があなたが交戦している敵に命中したとき、仲間の攻撃は+1d6の追加ダメージを与えます。"
-                },
-                {
-                    "id": "vitality",
-                    "name": "Vitality",
-                    "nameJa": "活力",
-                    "type": "daily",
-                    "typeJa": "デイリー",
-                    "target": "Your animal companion",
-                    "targetJa": "あなたの動物の仲間",
-                    "effect": "Your animal companion heals using a recovery.",
-                    "effectJa": "動物の仲間はリカバリーを使用して回復します。"
-                }
-            ]
-        },
-        "wildHealer": {
-            "level1": [
-                {
-                    "id": "wild-healer-spell",
-                    "name": "Wild Healer",
-                    "nameJa": "野生の癒し手",
-                    "type": "daily",
-                    "typeJa": "デイリー",
-                    "target": "You or one nearby ally",
-                    "targetJa": "自分または近くの仲間1人",
-                    "effect": "The target heals using a recovery, and regains additional hit points equal to 1d6 + your Wisdom modifier.",
-                    "effectJa": "対象はリカバリーを使用して回復し、さらに1d6+【判断力】修正値の追加HPを回復します。"
-                },
-                {
-                    "id": "regeneration",
-                    "name": "Regeneration",
-                    "nameJa": "再生",
-                    "type": "daily",
-                    "typeJa": "デイリー",
-                    "target": "You or one nearby ally",
-                    "targetJa": "自分または近くの仲間1人",
-                    "effect": "The target gains regeneration 3 until the end of the battle (at the start of each of the target's turns, it heals 3 hit points).",
-                    "effectJa": "対象は戦闘終了まで再生3を得ます（対象のターン開始時に3HPを回復します）。"
-                }
-            ]
-        }
+        "level1": [
+            {
+                "id": "pack-link",
+                "name": "Pack Link",
+                "nameJa": "群れの絆",
+                "type": "daily",
+                "typeJa": "デイリー",
+                "target": "Your animal companion",
+                "targetJa": "動物の相棒",
+                "effect": "Until the end of the battle, your animal companion's damage die increases by one step (e.g. d6 to d8).",
+                "effectJa": "戦闘終了まで、動物の相棒のダメージダイスが1段階上昇します（例: d6→d8）。"
+            },
+            {
+                "id": "vitality",
+                "name": "Vitality",
+                "nameJa": "活力",
+                "type": "daily",
+                "typeJa": "デイリー",
+                "target": "One nearby ally",
+                "targetJa": "近くの仲間1人",
+                "effect": "The target heals using a free recovery.",
+                "effectJa": "対象はフリーリカバリーを使用して回復できます。"
+            },
+            {
+                "id": "wild-heal",
+                "name": "Wild Heal",
+                "nameJa": "荒野の癒し",
+                "type": "special",
+                "typeJa": "特殊",
+                "target": "One nearby ally and one random nearby ally",
+                "targetJa": "近くの仲間1人と、ランダムな近くの仲間1人",
+                "effect": "Targets can heal using a recovery.",
+                "effectJa": "対象はリカバリーを使用して回復します。",
+                "note": "Use implies 'Wild Healer' talent daily uses."
+            },
+            {
+                "id": "regeneration",
+                "name": "Regeneration",
+                "nameJa": "再生",
+                "type": "daily",
+                "typeJa": "デイリー",
+                "target": "One nearby ally",
+                "targetJa": "近くの仲間1人",
+                "effect": "The target heals using a recovery. While the target is under 50% HP, they have regeneration (heal level/2 at start of turn).",
+                "effectJa": "対象はリカバリーを使用して回復します。対象のHPが半分以下の間、再生（ターン開始時にレベル÷2の回復）を得ます。"
+            }
+        ]
     }
 }

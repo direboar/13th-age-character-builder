@@ -34,6 +34,9 @@ const CharacterState = (() => {
     // 選択呪文/パワー（IDの配列）
     selectedSpells: [],
 
+    // 選択マニューバ（IDの配列）
+    selectedManeuvers: [],
+
     // バックグラウンド（名前とポイントのオブジェクト配列）
     backgrounds: [
       { name: '', points: 0 },
@@ -164,6 +167,28 @@ const CharacterState = (() => {
   };
 
   /**
+   * マニューバを選択/解除する
+   * @param {string} maneuverId - マニューバID
+   * @param {number} maxCount - 最大選択数
+   */
+  const toggleManeuver = (maneuverId, maxCount) => {
+    const current = [...character.selectedManeuvers || []];
+    const index = current.indexOf(maneuverId);
+
+    if (index > -1) {
+      current.splice(index, 1);
+    } else if (current.length < maxCount) {
+      current.push(maneuverId);
+    } else {
+      return false;
+    }
+
+    character = { ...character, selectedManeuvers: current };
+    notify();
+    return true;
+  };
+
+  /**
    * Icon Relationshipを設定する
    * @param {string} iconId - IconのID
    * @param {string} type - 'positive', 'conflicted', 'negative', null
@@ -274,6 +299,7 @@ const CharacterState = (() => {
     setAbility,
     toggleTalent,
     toggleSpell,
+    toggleManeuver,
     setIconRelationship,
     updateBackground,
     addBackground,

@@ -5,75 +5,32 @@
             "id": "healing-domain",
             "name": "Healing Domain",
             "nameJa": "治癒の領域",
-            "description": "Twice per day, you can use the Heal power as a free action instead of a quick action.",
-            "descriptionJa": "1日2回、「治癒」パワーをクイックアクションではなくフリーアクションとして使用できます。",
-            "feats": [
+            "description": "When you cast a spell that lets you or an ally heal using a recovery, the target also adds hit points equal to double your level to the recovery.",
+            "descriptionJa": "あなたまたは仲間がリカバリーを使用して回復する呪文を唱えたとき、対象はさらにレベルの2倍のHPを回復します。",
+            "subOptions": [
                 {
-                    "tier": "adventurer",
-                    "description": "When you use the Heal power, the target heals additional hit points equal to your Wisdom modifier.",
-                    "descriptionJa": "「治癒」パワーを使用したとき、対象は【判断力】修正値と同じ追加HPを回復します。"
-                },
-                {
-                    "tier": "champion",
-                    "description": "When you use the Heal power, the target can also make a saving throw against one save ends effect.",
-                    "descriptionJa": "「治癒」パワーを使用したとき、対象は「セーブ終了」の効果1つに対してセービングスローを行えます。"
+                    "id": "invocation-healing",
+                    "name": "Invocation of Healing",
+                    "nameJa": "治癒の祈願",
+                    "description": "This battle, you gain an additional use of the heal spell. The first heal spell you cast after using this invocation allows the target to heal using a free recovery instead of spending a recovery.",
+                    "descriptionJa": "この戦闘中、「治癒」の呪文の使用回数が1回増えます。この祈願を使用した後に最初に唱える「治癒」は、リカバリーを消費せずに（フリーリカバリーとして）回復させます。"
                 }
-            ]
-        },
-        {
-            "id": "holy-strike",
-            "name": "Holy Strike",
-            "nameJa": "聖なる一撃",
-            "description": "Once per battle, you can add your Wisdom modifier to the damage of a melee attack.",
-            "descriptionJa": "1戦闘に1回、近接攻撃のダメージに【判断力】修正値を加えられます。",
+            ],
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You can use Holy Strike twice per battle.",
-                    "descriptionJa": "1戦闘に2回使用できます。"
+                    "description": "When you cast a spell that allows an ally to heal using a recovery, you can let them use one of your recoveries instead.",
+                    "descriptionJa": "仲間がリカバリーを使用して回復する呪文を唱える際、仲間の代わりにあなたのリカバリーを使用させることができます。"
                 },
                 {
                     "tier": "champion",
-                    "description": "The damage bonus is now double your Wisdom modifier.",
-                    "descriptionJa": "ダメージボーナスが【判断力】修正値の2倍になります。"
-                }
-            ]
-        },
-        {
-            "id": "turn-undead",
-            "name": "Turn Undead",
-            "nameJa": "アンデッド退散",
-            "description": "Once per battle, as a quick action, you can make a Charisma + Level attack vs. MD against all nearby undead enemies. On a hit, the undead creature is dazed until the end of your next turn.",
-            "descriptionJa": "1戦闘に1回、クイックアクションとして、近くのすべてのアンデッドの敵に対して【魅力】+レベル vs MDの攻撃を行えます。命中すると、アンデッドは次のターン終了まで朦朧状態になります。",
-            "feats": [
-                {
-                    "tier": "adventurer",
-                    "description": "On a hit, the undead creature is also weakened until the end of your next turn.",
-                    "descriptionJa": "命中すると、アンデッドは次のターン終了まで弱体化状態にもなります。"
+                    "description": "The invocation of healing gives you two additional uses of heal this battle instead of only one.",
+                    "descriptionJa": "「治癒の祈願」による「治癒」の追加使用回数が1回ではなく2回になります。"
                 },
                 {
-                    "tier": "champion",
-                    "description": "On a hit, the undead creature flees if it can.",
-                    "descriptionJa": "命中すると、アンデッドは可能であれば逃走します。"
-                }
-            ]
-        },
-        {
-            "id": "war-domain",
-            "name": "War Domain",
-            "nameJa": "戦争の領域",
-            "description": "Once per battle, you can add a +2 bonus to a melee attack roll.",
-            "descriptionJa": "1戦闘に1回、近接攻撃ロールに+2ボーナスを加えられます。",
-            "feats": [
-                {
-                    "tier": "adventurer",
-                    "description": "You can use War Domain twice per battle.",
-                    "descriptionJa": "1戦闘に2回使用できます。"
-                },
-                {
-                    "tier": "champion",
-                    "description": "The attack bonus increases to +4.",
-                    "descriptionJa": "攻撃ボーナスが+4に増加します。"
+                    "tier": "epic",
+                    "description": "Increase the additional hit points the target heals to triple your level.",
+                    "descriptionJa": "追加回復量がレベルの3倍に増加します。"
                 }
             ]
         },
@@ -81,38 +38,121 @@
             "id": "protection-domain",
             "name": "Protection Domain",
             "nameJa": "守護の領域",
-            "description": "Once per battle, as a free action, you can give a nearby ally a +2 bonus to all defenses until the end of your next turn.",
-            "descriptionJa": "1戦闘に1回、フリーアクションとして、近くの仲間に次のターン終了まですべての防御値に+2ボーナスを与えられます。",
+            "description": "Once per battle, you can affect two additional allies when you cast a spell for broad effect.",
+            "descriptionJa": "1戦闘に1回、広域効果（Broad Effect）で呪文を唱える際、対象の仲間をさらに2人追加できます。",
+            "subOptions": [
+                {
+                    "id": "invocation-protection",
+                    "name": "Invocation of Protection",
+                    "nameJa": "守護の祈願",
+                    "description": "This battle, critical hits against you and your nearby allies deal normal damage instead of critical damage.",
+                    "descriptionJa": "この戦闘中、あなたと近くの仲間に対するクリティカルヒットは、クリティカルダメージではなく通常のダメージになります。"
+                }
+            ],
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "The defense bonus increases to +4.",
-                    "descriptionJa": "防御ボーナスが+4に増加します。"
+                    "description": "Whenever you target one or more allies with a spell, one ally of your choice can roll a save against a save ends effect.",
+                    "descriptionJa": "あなたが呪文で1人以上の仲間を対象にしたとき、選んだ仲間1人は「セーブ終了」の効果に対するセービングスローを行えます。"
                 },
                 {
                     "tier": "champion",
-                    "description": "You can use Protection Domain twice per battle.",
-                    "descriptionJa": "1戦闘に2回使用できます。"
+                    "description": "The invocation grants resistance 12+ to critical hits instead.",
+                    "descriptionJa": "祈願の効果が向上し、クリティカルヒットに対して耐性12+を得るようになります（詳細ルール参照）。"
                 }
             ]
         },
         {
-            "id": "divine-domain",
-            "name": "Divine Domain",
-            "nameJa": "神聖の領域",
-            "description": "Once per day, you can call upon your deity to grant you a +4 bonus to all attacks and defenses for one round.",
-            "descriptionJa": "1日1回、神に呼びかけて1ラウンドの間、すべての攻撃と防御値に+4ボーナスを得られます。",
+            "id": "strength-domain",
+            "name": "Strength Domain",
+            "nameJa": "力の領域",
+            "description": "You can wield heavy/martial weapons without an attack penalty.",
+            "descriptionJa": "重装武器や軍用武器を攻撃ペナルティなしで使用できます。",
+            "subOptions": [
+                {
+                    "id": "invocation-strength",
+                    "name": "Invocation of Strength",
+                    "nameJa": "力の祈願",
+                    "description": "This battle, you and your nearby allies deal triple damage instead of double damage on critical hits with melee attacks.",
+                    "descriptionJa": "この戦闘中、あなたと近くの仲間は近接攻撃のクリティカルヒットで2倍ではなく3倍のダメージを与えます。"
+                }
+            ],
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "The bonus lasts for two rounds instead of one.",
-                    "descriptionJa": "ボーナスが1ラウンドではなく2ラウンド持続します。"
+                    "description": "Once per battle, you can deal extra damage to one target you hit with a melee attack as a free action. The damage bonus is d4 x (Str mod or Level).",
+                    "descriptionJa": "1戦闘に1回、近接攻撃が命中した対象にフリーアクションで追加ダメージを与えられます。ダメージは d4 ×（【筋力】修正値またはレベルの高い方）です。"
+                },
+                {
+                    "tier": "champion",
+                    "description": "You can use d8s instead of d4s for the bonus damage dice.",
+                    "descriptionJa": "追加ダメージのダイスがd4ではなくd8になります。"
+                },
+                {
+                    "tier": "epic",
+                    "description": "Once per day, you can use d20s instead of d8s for the bonus damage dice.",
+                    "descriptionJa": "1日1回、追加ダメージのダイスをd8の代わりにd20にできます。"
+                }
+            ]
+        },
+        {
+            "id": "sun-domain",
+            "name": "Sun Domain",
+            "nameJa": "太陽の領域",
+            "description": "Every attack you make deals holy damage instead of other types of damage unless you choose otherwise.",
+            "descriptionJa": "あなたの行うすべての攻撃は、神聖ダメージとなります（任意で元の属性も選択可）。",
+            "subOptions": [
+                {
+                    "id": "invocation-sun",
+                    "name": "Invocation of Sun",
+                    "nameJa": "太陽の祈願",
+                    "description": "When you cast a daily cleric spell this battle, roll a d6. If you roll <= escalation die, you regain the use of that daily spell after the battle.",
+                    "descriptionJa": "この戦闘でクレリックのデイリー呪文を唱えたとき、d6を振ります。出目がエスカレーションダイス以下であれば、戦闘後にその呪文の使用回数が回復します。"
+                }
+            ],
+            "feats": [
+                {
+                    "tier": "adventurer",
+                    "description": "If your attack already deals holy damage, it gains +1 damage (Champion: +2, Epic: +3).",
+                    "descriptionJa": "攻撃が元々神聖ダメージを与える場合、ダメージに+1のボーナスを得ます（Championで+2, Epicで+3）。"
+                },
+                {
+                    "tier": "champion",
+                    "description": "You gain a +2 bonus to all defenses against attacks by undead.",
+                    "descriptionJa": "アンデッドからの攻撃に対して、すべての防御値に+2のボーナスを得ます。"
+                }
+            ]
+        },
+        {
+            "id": "trickery-domain",
+            "name": "Trickery Domain",
+            "nameJa": "欺きの領域",
+            "description": "Once per battle, as a quick action when you are engaged, roll a d20 (trick die). Give it to a nearby ally or enemy to use as their attack roll.",
+            "descriptionJa": "1戦闘に1回、エンゲージ中にクイックアクションとしてd20（トリックダイス）を振れます。次のターン開始前に、近くの仲間か敵にその出目を攻撃ロールとして使わせることができます。",
+            "subOptions": [
+                {
+                    "id": "invocation-trickery",
+                    "name": "Invocation of Trickery",
+                    "nameJa": "欺きの祈願",
+                    "description": "See SRD for complex illusion effects.",
+                    "descriptionJa": "幻影を用いた複雑な効果（SRD参照）。"
                 }
             ]
         }
     ],
     "spells": {
         "level1": [
+            {
+                "id": "bless",
+                "name": "Bless",
+                "nameJa": "祝福",
+                "type": "daily",
+                "typeJa": "デイリー",
+                "target": "One nearby ally (Power) or 3 creatures (Broad)",
+                "targetJa": "近くの仲間1人（パワー）または生物3体（広域）",
+                "effect": "Power: +2 attack bonus. Broad: +1 attack bonus.",
+                "effectJa": "パワー：攻撃ボーナス+2。広域：攻撃ボーナス+1。"
+            },
             {
                 "id": "cure-wounds",
                 "name": "Cure Wounds",
@@ -121,48 +161,17 @@
                 "typeJa": "デイリー",
                 "target": "You or one nearby ally",
                 "targetJa": "自分または近くの仲間1人",
-                "effect": "The target heals using a recovery, and regains additional hit points equal to 1d8 + your Wisdom modifier.",
-                "effectJa": "対象はリカバリーを使用して回復し、さらに1d8+【判断力】修正値の追加HPを回復します。",
-                "feats": [
-                    {
-                        "tier": "adventurer",
-                        "description": "The additional healing increases to 2d8.",
-                        "descriptionJa": "追加回復が2d8に増加します。"
-                    }
-                ]
+                "effect": "The target heals using a free recovery.",
+                "effectJa": "対象はフリーリカバリーを使用して回復します。"
             },
             {
-                "id": "bless",
-                "name": "Bless",
-                "nameJa": "祝福",
+                "id": "hammer-of-faith",
+                "name": "Hammer of Faith",
+                "nameJa": "信仰の槌",
                 "type": "daily",
                 "typeJa": "デイリー",
-                "target": "You and all nearby allies",
-                "targetJa": "自分と近くのすべての仲間",
-                "effect": "Targets gain a +1 attack bonus until the end of the battle.",
-                "effectJa": "対象は戦闘終了まで+1の攻撃ボーナスを得ます。",
-                "feats": [
-                    {
-                        "tier": "adventurer",
-                        "description": "The attack bonus increases to +2.",
-                        "descriptionJa": "攻撃ボーナスが+2に増加します。"
-                    }
-                ]
-            },
-            {
-                "id": "hold-undead",
-                "name": "Hold Undead",
-                "nameJa": "アンデッド拘束",
-                "type": "daily",
-                "typeJa": "デイリー",
-                "attack": "Wisdom + Level vs. MD",
-                "attackJa": "【判断力】+レベル vs MD",
-                "target": "One nearby undead enemy",
-                "targetJa": "近くのアンデッドの敵1体",
-                "hit": "The target is stunned until the end of your next turn.",
-                "hitJa": "対象は次のターン終了まで気絶状態になります。",
-                "miss": "The target is dazed until the end of your next turn.",
-                "missJa": "対象は次のターン終了まで朦朧状態になります。"
+                "effect": "Until the end of the battle, your basic melee attacks use d12s as their base weapon damage dice.",
+                "effectJa": "戦闘終了まで、基本近接攻撃の武器ダメージダイスがd12になります。"
             },
             {
                 "id": "javelin-of-faith",
@@ -172,12 +181,47 @@
                 "typeJa": "自由",
                 "attack": "Wisdom + Level vs. PD",
                 "attackJa": "【判断力】+レベル vs PD",
-                "target": "One nearby or far away enemy",
-                "targetJa": "近くまたは遠くの敵1体",
-                "hit": "1d6 + Wisdom modifier holy damage",
-                "hitJa": "1d6+【判断力】修正値の神聖ダメージ",
+                "target": "One nearby enemy",
+                "targetJa": "近くの敵1体",
+                "hit": "1d6 + Wisdom holy damage",
+                "hitJa": "1d6+【判断力】の神聖ダメージ",
                 "miss": "Damage equal to your level",
                 "missJa": "レベルと同じダメージ"
+            },
+            {
+                "id": "shield-of-faith",
+                "name": "Shield of Faith",
+                "nameJa": "信仰の盾",
+                "type": "daily",
+                "typeJa": "デイリー",
+                "target": "One nearby ally (Power) or 3 creatures (Broad)",
+                "targetJa": "近くの仲間1人（パワー）または生物3体（広域）",
+                "effect": "Power: +2 AC. Broad: +1 AC.",
+                "effectJa": "パワー：AC+2。広域：AC+1。"
+            },
+            {
+                "id": "spirits-of-the-righteous",
+                "name": "Spirits of the Righteous",
+                "nameJa": "正義の霊",
+                "type": "1/battle",
+                "typeJa": "1戦1回",
+                "attack": "Wisdom + Level vs. MD",
+                "attackJa": "【判断力】+レベル vs MD",
+                "hit": "4d6 + Wisdom holy damage, and ally with lowest HP gains +4 AC.",
+                "hitJa": "4d6+【判断力】の神聖ダメージを与え、最もHPの低い仲間のACを+4します。"
+            },
+            {
+                "id": "turn-undead",
+                "name": "Turn Undead",
+                "nameJa": "アンデッド退散",
+                "type": "daily",
+                "typeJa": "デイリー",
+                "attack": "Wisdom + Charisma + Level vs. MD",
+                "attackJa": "【判断力】+【魅力】+レベル vs MD",
+                "target": "1d4 nearby undead creatures (55 HP or less)",
+                "targetJa": "近くのアンデッド1d4体（HP55以下）",
+                "hit": "Dazed. 4+ diff: damage. 12+ diff: destroyed (non-mook) or large damage (mook).",
+                "hitJa": "命中：朦朧状態。差4以上：ダメージ追加。差12以上：破壊（雑魚以外）または大ダメージ（雑魚）。"
             }
         ]
     }

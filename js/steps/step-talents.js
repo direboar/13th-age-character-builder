@@ -3,39 +3,39 @@
  */
 
 const StepTalents = (() => {
-    let talentsData = null;
+  let talentsData = null;
 
-    const loadData = async (classId) => {
-        if (talentsData && talentsData.classId === classId) return talentsData;
-        try {
-            const response = await fetch(`data/talents/${classId}.json`);
-            talentsData = await response.json();
-            return talentsData;
-        } catch (e) {
-            console.error('タレントデータの読み込みエラー:', e);
-            return null;
-        }
-    };
+  const loadData = async (classId) => {
+    if (talentsData && talentsData.classId === classId) return talentsData;
+    try {
+      const response = await fetch(`data/talents/${classId}.json`);
+      talentsData = await response.json();
+      return talentsData;
+    } catch (e) {
+      console.error('タレントデータの読み込みエラー:', e);
+      return null;
+    }
+  };
 
-    const getTierName = (tier) => {
-        const names = { adventurer: '冒険者', champion: '勇者', epic: '英雄' };
-        return names[tier] || tier;
-    };
+  const getTierName = (tier) => {
+    const names = { adventurer: '冒険者', champion: '勇者', epic: '英雄' };
+    return names[tier] || tier;
+  };
 
-    const render = async () => {
-        const character = CharacterState.get();
-        const classId = character.class;
+  const render = async () => {
+    const character = CharacterState.get();
+    const classId = character.class;
 
-        if (!classId) {
-            return `<div class="step-content"><p class="text-secondary">先にクラスを選択してください。</p></div>`;
-        }
+    if (!classId) {
+      return `<div class="step-content"><p class="text-secondary">先にクラスを選択してください。</p></div>`;
+    }
 
-        const data = await loadData(classId);
-        const classData = await StepClass.getClassData(classId);
-        const maxTalents = classData ? classData.talentCount : 3;
-        const selectedCount = character.selectedTalents.length;
+    const data = await loadData(classId);
+    const classData = await StepClass.getClassData(classId);
+    const maxTalents = classData ? classData.talentCount : 3;
+    const selectedCount = character.selectedTalents.length;
 
-        const html = `
+    let html = `
       <div class="step-content">
         <h2 class="section-title">タレントを選択</h2>
         <p class="section-description">
@@ -43,7 +43,7 @@ const StepTalents = (() => {
         </p>
 
         <div class="talent-selection-counter">
-          <span class="counter-label">選択数</span>
+          <span class="counter-label">タレント選択数</span>
           <span class="counter-value" id="talentCounter">${selectedCount} / ${maxTalents}</span>
         </div>
 
@@ -52,31 +52,41 @@ const StepTalents = (() => {
             ${data.talents.map(talent => renderTalentCard(talent, character, maxTalents)).join('')}
           </div>
         ` : `<p class="text-secondary">このクラスのタレントデータはまだ準備中です。</p>`}
+        `;
 
-        <!-- Fighterの場合はマニューバも表示 -->
-        ${classId === 'fighter' && data && data.maneuvers ? `
-          <div class="mt-6">
+    // Fighterの場合はマニューバも表示
+    if (classId === 'fighter' && data && data.maneuvers) {
+      const maneuverMax = 3; // Fighter Level 1 default
+      const selectedManeuvers = character.selectedManeuvers || [];
+
+      html += `
+          <div class="mt-8 pt-6 border-t border-gray-700">
             <h3 class="section-title" style="font-size: 1.25rem;">マニューバ（Flexible Attacks）</h3>
             <p class="section-description">
-              ファイターのマニューバはダイスの出目に応じて自動的に発動します。
-              1レベルのマニューバはすべて自動的に利用可能です。
+              ファイターのマニューバはダイスの出目に応じて発動します。レベル1ではリストから3つのマニューバを選択して習得します。
             </p>
+            
+            <div class="talent-selection-counter mb-4">
+              <span class="counter-label">マニューバ選択数</span>
+              <span class="counter-value" id="maneuverCounter">${selectedManeuvers.length} / ${maneuverMax}</span>
+            </div>
+
             <div class="talent-grid">
-              ${data.maneuvers.level1.map(m => renderManeuverCard(m)).join('')}
+              ${data.maneuvers.level1.map(m => renderManeuverCard(m, selectedManeuvers, maneuverMax)).join('')}
             </div>
           </div>
-        ` : ''}
-      </div>
-    `;
+            `;
+    }
 
-        return html;
-    };
+    html += `</div>`;
+    return html;
+  };
 
-    const renderTalentCard = (talent, character, maxTalents) => {
-        const isSelected = character.selectedTalents.includes(talent.id);
-        const isDisabled = !isSelected && character.selectedTalents.length >= maxTalents;
+  const renderTalentCard = (talent, character, maxTalents) => {
+    const isSelected = character.selectedTalents.includes(talent.id);
+    const isDisabled = !isSelected && character.selectedTalents.length >= maxTalents;
 
-        return `
+    return `
       <div class="talent-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}"
            onclick="StepTalents.toggleTalent('${talent.id}', ${maxTalents})"
            style="${isDisabled ? 'opacity:0.5; cursor:not-allowed;' : ''}">
@@ -114,55 +124,87 @@ const StepTalents = (() => {
         ` : ''}
       </div>
     `;
-    };
+  };
 
-    const renderManeuverCard = (maneuver) => {
-        return `
-      <div class="talent-card" style="cursor:default; border-color: var(--color-border-gold);">
+  const renderManeuverCard = (maneuver, selectedManeuvers, max) => {
+    const isSelected = selectedManeuvers.includes(maneuver.id);
+    const isDisabled = !isSelected && selectedManeuvers.length >= max;
+
+    return `
+      <div class="talent-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}"
+           onclick="StepTalents.toggleManeuver('${maneuver.id}', ${max})"
+           style="border-color: var(--color-border-gold); ${isDisabled ? 'opacity:0.5; cursor:not-allowed;' : ''}">
         <div class="talent-header">
           <div>
             <div class="talent-name">${maneuver.name}</div>
             <div class="talent-name-ja">${maneuver.nameJa}</div>
           </div>
-          <span class="badge badge-gold">${maneuver.triggerJa}</span>
+          <div class="flex items-center gap-2">
+             <span class="badge badge-gold">${maneuver.triggerJa}</span>
+             <div class="talent-checkbox text-gold">${isSelected ? '✓' : ''}</div>
+          </div>
         </div>
         <div class="talent-description">${maneuver.effectJa}</div>
         <div class="rule-box-content-en" style="margin-top:8px; font-size:0.75rem; color:var(--color-text-muted); border-top:1px solid var(--color-border); padding-top:8px;">Trigger: ${maneuver.trigger} — ${maneuver.effect}</div>
       </div>
     `;
-    };
+  };
 
-    const toggleTalent = (talentId, maxTalents) => {
-        const success = CharacterState.toggleTalent(talentId, maxTalents);
-        if (!success) {
-            app.showToast(`タレントは最大${maxTalents}つまで選択できます`, 'error');
-            return;
-        }
+  const toggleTalent = (talentId, maxTalents) => {
+    const success = CharacterState.toggleTalent(talentId, maxTalents);
+    if (!success) {
+      app.showToast(`タレントは最大${maxTalents}つまで選択できます`, 'error');
+      return;
+    }
 
-        const character = CharacterState.get();
-        const counter = document.getElementById('talentCounter');
-        if (counter) {
-            counter.textContent = `${character.selectedTalents.length} / ${maxTalents}`;
-        }
+    const character = CharacterState.get();
+    const counter = document.getElementById('talentCounter');
+    if (counter) {
+      counter.textContent = `${character.selectedTalents.length} / ${maxTalents}`;
+    }
 
-        // カードの状態を更新
-        const card = document.querySelector(`[onclick="StepTalents.toggleTalent('${talentId}', ${maxTalents})"]`);
-        if (card) {
-            const isSelected = character.selectedTalents.includes(talentId);
-            card.classList.toggle('selected', isSelected);
-            const checkbox = card.querySelector('.talent-checkbox');
-            if (checkbox) checkbox.textContent = isSelected ? '✓' : '';
-        }
-    };
+    // カードの状態を更新
+    const card = document.querySelector(`[onclick="StepTalents.toggleTalent('${talentId}', ${maxTalents})"]`);
+    if (card) {
+      const isSelected = character.selectedTalents.includes(talentId);
+      card.classList.toggle('selected', isSelected);
+      const checkbox = card.querySelector('.talent-checkbox');
+      if (checkbox) checkbox.textContent = isSelected ? '✓' : '';
+    }
+  };
 
-    const validate = () => {
-        const character = CharacterState.get();
-        const classId = character.class;
-        if (!classId) return true;
+  const toggleManeuver = (maneuverId, max) => {
+    const success = CharacterState.toggleManeuver(maneuverId, max);
+    if (!success) {
+      app.showToast(`マニューバは最大${max}つまで選択できます`, 'error');
+      return;
+    }
 
-        // タレント選択は任意（0でも進める）
-        return true;
-    };
+    const character = CharacterState.get();
+    const counter = document.getElementById('maneuverCounter');
+    if (counter) {
+      const selected = character.selectedManeuvers || [];
+      counter.textContent = `${selected.length} / ${max}`;
+    }
 
-    return { render, toggleTalent, validate };
+    const card = document.querySelector(`[onclick="StepTalents.toggleManeuver('${maneuverId}', ${max})"]`);
+    if (card) {
+      const selected = character.selectedManeuvers || [];
+      const isSelected = selected.includes(maneuverId);
+      card.classList.toggle('selected', isSelected);
+      const checkbox = card.querySelector('.talent-checkbox');
+      if (checkbox) checkbox.textContent = isSelected ? '✓' : '';
+    }
+  };
+
+  const validate = () => {
+    const character = CharacterState.get();
+    const classId = character.class;
+    if (!classId) return true;
+
+    // タレント選択は任意（0でも進める）
+    return true;
+  };
+
+  return { render, toggleTalent, toggleManeuver, validate };
 })();

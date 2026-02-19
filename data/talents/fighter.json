@@ -10,18 +10,18 @@
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You can also use Cleave when you drop a mook.",
-                    "descriptionJa": "雑魚を倒したときも「薙ぎ払い」を使用できます。"
+                    "description": "If you have your move action available, you can use it before making your Cleave attack to reach an enemy you are not already engaged with.",
+                    "descriptionJa": "移動アクションが残っている場合、薙ぎ払い攻撃を行う前に移動して、まだエンゲージしていない敵に接敵できます。"
                 },
                 {
                     "tier": "champion",
-                    "description": "You can use Cleave twice per battle.",
-                    "descriptionJa": "1戦闘に2回使用できます。"
+                    "description": "You can use Cleave twice per battle (but only once per round).",
+                    "descriptionJa": "1戦闘に2回使用できます（ただし1ラウンドに1回まで）。"
                 },
                 {
                     "tier": "epic",
-                    "description": "You can use Cleave as many times as you want per battle.",
-                    "descriptionJa": "1戦闘に何度でも使用できます。"
+                    "description": "You gain a +4 attack bonus with your Cleave attacks.",
+                    "descriptionJa": "薙ぎ払い攻撃に+4の攻撃ボーナスを得ます。"
                 }
             ]
         },
@@ -29,18 +29,71 @@
             "id": "comeback-strike",
             "name": "Comeback Strike",
             "nameJa": "反撃の一撃",
-            "description": "Once per battle as a free action, make a melee attack after you miss with a melee attack.",
-            "descriptionJa": "1戦闘に1回、近接攻撃を外した後、フリーアクションとして近接攻撃を行えます。",
+            "description": "Once per battle as a free action, make another attack with a -2 penalty after your first fighter attack during your turn misses.",
+            "descriptionJa": "1戦闘に1回、自分のターン中の最初の攻撃が外れた後、フリーアクションとして-2のペナルティで再攻撃を行えます。",
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You gain a +2 attack bonus with the Comeback Strike attack.",
-                    "descriptionJa": "「反撃の一撃」の攻撃に+2の攻撃ボーナスを得ます。"
+                    "description": "You no longer take the -2 penalty to your Comeback Strike attacks.",
+                    "descriptionJa": "反撃の一撃における-2のペナルティが無くなります。"
                 },
                 {
                     "tier": "champion",
-                    "description": "You can use Comeback Strike twice per battle.",
-                    "descriptionJa": "1戦闘に2回使用できます。"
+                    "description": "Once per day, you can use Comeback Strike twice in a battle.",
+                    "descriptionJa": "1日1回、1戦闘中に2回使用できます。"
+                },
+                {
+                    "tier": "epic",
+                    "description": "You gain a +4 attack bonus with your Comeback Strike attacks.",
+                    "descriptionJa": "反撃の一撃に+4の攻撃ボーナスを得ます。"
+                }
+            ]
+        },
+        {
+            "id": "counter-attack",
+            "name": "Counter-Attack",
+            "nameJa": "カウンターアタック",
+            "description": "Once per round when the escalation die is even and an enemy misses you with a natural odd melee attack roll, you can make a basic melee attack dealing half damage against that enemy as a free action.",
+            "descriptionJa": "1ラウンドに1回、エスカレーションダイスが偶数で、敵が奇数の出目であなたへの近接攻撃を外したとき、その敵に対して半分のダメージを与える基本近接攻撃をフリーアクションとして行えます。",
+            "feats": [
+                {
+                    "tier": "adventurer",
+                    "description": "Your Counter-Attack attack now deals full damage.",
+                    "descriptionJa": "カウンターアタックで通常のダメージを与えられるようになります。"
+                },
+                {
+                    "tier": "champion",
+                    "description": "You can use Counter-Attack once per turn instead of once per round.",
+                    "descriptionJa": "1ラウンドに1回ではなく、1ターンに1回使用できるようになります。"
+                },
+                {
+                    "tier": "epic",
+                    "description": "You can now use Counter-Attack when the escalation die is 3+.",
+                    "descriptionJa": "エスカレーションダイスが3以上のときにも使用できるようになります。"
+                }
+            ]
+        },
+        {
+            "id": "deadeye-archer",
+            "name": "Deadeye Archer",
+            "nameJa": "デッドアイ・アーチャー",
+            "description": "Your attacks with ranged weapons deal higher damage dice (d6->d8, d8->d10). Misses with basic ranged attacks deal damage equal to your level.",
+            "descriptionJa": "遠距離武器のダメージダイスが向上します（d6→d8、d8→d10）。基本遠距離攻撃が外れた場合、レベルに等しいダメージを与えます。",
+            "feats": [
+                {
+                    "tier": "adventurer",
+                    "description": "If you spend a quick action to aim before making a ranged basic attack, add your Dexterity modifier to the damage if you miss.",
+                    "descriptionJa": "遠距離攻撃の前にクイックアクションを使って狙いをつけると、外れた場合のダメージに【敏捷力】修正値を加算します。"
+                },
+                {
+                    "tier": "champion",
+                    "description": "Once per battle, expand your crit range with a fighter ranged attack by 4.",
+                    "descriptionJa": "1戦闘に1回、遠距離攻撃のクリティカル範囲を4拡大できます。"
+                },
+                {
+                    "tier": "epic",
+                    "description": "Your crit range with ranged weapon attacks expands by 1.",
+                    "descriptionJa": "遠距離武器攻撃のクリティカル範囲が常に1拡大します。"
                 }
             ]
         },
@@ -48,18 +101,23 @@
             "id": "heavy-warrior",
             "name": "Heavy Warrior",
             "nameJa": "重装戦士",
-            "description": "Once per battle, when you hit with a melee attack, you can deal extra damage equal to your Constitution modifier.",
-            "descriptionJa": "1戦闘に1回、近接攻撃が命中したとき、【耐久力】修正値と同じ追加ダメージを与えられます。",
+            "description": "Once per battle while wearing heavy armor, when you are hit by an attack that targets AC, as a free action, you can take half damage from that attack instead.",
+            "descriptionJa": "1戦闘に1回、重装鎧を着用中にACを対象とする攻撃が命中したとき、フリーアクションとしてそのダメージを半減できます。",
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You can use Heavy Warrior once per round instead of once per battle.",
-                    "descriptionJa": "1戦闘に1回ではなく、1ラウンドに1回使用できます。"
+                    "description": "Once per day, you can use Heavy Warrior twice in a battle.",
+                    "descriptionJa": "1日1回、1戦闘中に2回使用できます。"
                 },
                 {
                     "tier": "champion",
-                    "description": "The extra damage is now double your Constitution modifier.",
-                    "descriptionJa": "追加ダメージが【耐久力】修正値の2倍になります。"
+                    "description": "You can also use the power against an attack that targets PD.",
+                    "descriptionJa": "PDを対象とする攻撃に対しても使用できるようになります。"
+                },
+                {
+                    "tier": "epic",
+                    "description": "Once per day, you can reroll a recharge roll for a magic armor power.",
+                    "descriptionJa": "1日1回、魔法の鎧のパワーのリチャージロールを振り直せます。"
                 }
             ]
         },
@@ -67,18 +125,23 @@
             "id": "power-attack",
             "name": "Power Attack",
             "nameJa": "渾身の一撃",
-            "description": "Once per battle, you can add a +1d6 bonus to a melee attack's damage roll. The bonus increases to +2d6 at 5th level and +3d6 at 8th level.",
-            "descriptionJa": "1戦闘に1回、近接攻撃のダメージロールに+1d6のボーナスを加えられます。5レベルで+2d6、8レベルで+3d6に増加します。",
+            "description": "Once per battle before you roll an attack, declare you're using Power Attack. If hit, deal +1d4/level (1H) or +1d6/level (2H) damage.",
+            "descriptionJa": "1戦闘に1回、攻撃ロールの前に「渾身の一撃」を宣言できます。命中すると、片手武器ならレベルごとに+1d4、両手武器ならレベルごとに+1d6の追加ダメージを与えます。",
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You can use Power Attack twice per battle.",
-                    "descriptionJa": "1戦闘に2回使用できます。"
+                    "description": "You deal the additional Power Attack damage even if the attack misses.",
+                    "descriptionJa": "攻撃が外れても追加ダメージを与えます。"
                 },
                 {
                     "tier": "champion",
-                    "description": "You can use Power Attack with ranged attacks.",
-                    "descriptionJa": "遠距離攻撃にも「渾身の一撃」を使用できます。"
+                    "description": "One battle per day, you can use Power Attack twice in the battle.",
+                    "descriptionJa": "1日1回、1戦闘中に2回使用できるようになります。"
+                },
+                {
+                    "tier": "epic",
+                    "description": "One-handed weapon damage increases to 1d6 per level; two-handed to 1d8 per level.",
+                    "descriptionJa": "追加ダメージが片手武器で1d6/レベル、両手武器で1d8/レベルに増加します。"
                 }
             ]
         },
@@ -86,18 +149,23 @@
             "id": "skilled-intercept",
             "name": "Skilled Intercept",
             "nameJa": "熟練の迎撃",
-            "description": "Once per round as a free action, make a normal save (11+) to intercept an enemy that is moving to attack one of your nearby allies. If you succeed, the enemy attacks you instead.",
-            "descriptionJa": "1ラウンドに1回、フリーアクションとして通常セーブ（11+）を行い、近くの仲間を攻撃しようとしている敵を迎撃できます。成功すると、敵はあなたを攻撃します。",
+            "description": "Once per round as a free action, roll a normal save (11+) to intercept an enemy who is moving to attack one of your nearby allies.",
+            "descriptionJa": "1ラウンドに1回、フリーアクションとして通常セーブ（11+）を行い、近くの仲間を攻撃しようとしている敵を迎撃できます。",
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You gain a +2 bonus to the Skilled Intercept save.",
-                    "descriptionJa": "「熟練の迎撃」のセーブに+2ボーナスを得ます。"
+                    "description": "You can pop free from up to two enemies when using Skilled Intercept.",
+                    "descriptionJa": "迎撃を使用する際、最大2体の敵から離脱（Pop Free）できます。"
                 },
                 {
                     "tier": "champion",
-                    "description": "When you intercept an enemy, you can make a free attack against it.",
-                    "descriptionJa": "敵を迎撃したとき、その敵に対してフリー攻撃を行えます。"
+                    "description": "You gain a bonus to your Skilled Intercept save equal to the escalation die.",
+                    "descriptionJa": "迎撃のセーブにエスカレーションダイスの値を加算できます。"
+                },
+                {
+                    "tier": "epic",
+                    "description": "Enemies can't make opportunity attacks against you during your Skilled Intercept movement.",
+                    "descriptionJa": "迎撃の移動中、敵は機会攻撃を行えません。"
                 }
             ]
         },
@@ -105,18 +173,23 @@
             "id": "tough-as-iron",
             "name": "Tough as Iron",
             "nameJa": "鉄のような頑強さ",
-            "description": "Once per battle, when you take damage, you can reduce that damage by an amount equal to your Constitution modifier.",
-            "descriptionJa": "1戦闘に1回、ダメージを受けたとき、【耐久力】修正値と同じ量だけそのダメージを軽減できます。",
+            "description": "Once per battle, you can rally using a quick action instead of a standard action.",
+            "descriptionJa": "1戦闘に1回、標準アクションの代わりにクイックアクションでラリィ（回復）を行えます。",
             "feats": [
                 {
                     "tier": "adventurer",
-                    "description": "You can use Tough as Iron twice per battle.",
-                    "descriptionJa": "1戦闘に2回使用できます。"
+                    "description": "Once per day, you can rally twice during a battle as a quick action.",
+                    "descriptionJa": "1日1回、1戦闘中に2回クイックアクションでラリィを行えます（2回目はセーブ不要）。"
                 },
                 {
                     "tier": "champion",
-                    "description": "The damage reduction is now double your Constitution modifier.",
-                    "descriptionJa": "ダメージ軽減が【耐久力】修正値の2倍になります。"
+                    "description": "Increase your total number of recoveries by 2.",
+                    "descriptionJa": "リカバリーの最大数が2回分増加します。"
+                },
+                {
+                    "tier": "epic",
+                    "description": "When you roll a natural 20 with an attack, you gain an additional use of Tough As Iron this battle.",
+                    "descriptionJa": "攻撃でナチュラル20を出したとき、この戦闘でもう一度「鉄のような頑強さ」を使用できるようになります。"
                 }
             ]
         }
@@ -124,64 +197,94 @@
     "maneuvers": {
         "level1": [
             {
+                "id": "brace-for-it",
+                "name": "Brace for It",
+                "nameJa": "備えよ！",
+                "trigger": "Any miss",
+                "triggerJa": "何らかの外れ",
+                "effect": "Until the end of your next turn, the first critical hit you take from a melee attack becomes a normal hit instead.",
+                "effectJa": "次のターンの終了時まで、最初に受ける近接攻撃のクリティカルヒットは通常のヒットになります。"
+            },
+            {
                 "id": "carve-an-opening",
                 "name": "Carve an Opening",
                 "nameJa": "突破口を開く",
-                "type": "flexible",
                 "trigger": "Natural odd roll",
                 "triggerJa": "奇数の出目",
-                "effect": "Your crit range with melee attacks expands by 2 until the end of the battle. This is cumulative.",
-                "effectJa": "戦闘終了まで、近接攻撃のクリット範囲が2拡大します。これは累積します。"
+                "effect": "Your crit range with melee attacks expands by 1 (cumulative) until you score a melee critical hit.",
+                "effectJa": "近接攻撃でクリティカルが出るまで、クリティカル範囲が累積的に1拡大します。"
             },
             {
                 "id": "deadly-assault",
                 "name": "Deadly Assault",
                 "nameJa": "致死の猛攻",
-                "type": "flexible",
-                "trigger": "Natural 2",
-                "triggerJa": "2の出目",
-                "effect": "Reroll the attack, but keep the new result even if it's worse.",
-                "effectJa": "攻撃を振り直しますが、悪い結果でも新しい出目を使用します。"
+                "trigger": "Natural even hit",
+                "triggerJa": "偶数の命中",
+                "effect": "Reroll any 1s from your damage roll.",
+                "effectJa": "ダメージロールの「1」をすべて振り直します。"
+            },
+            {
+                "id": "defensive-fighting",
+                "name": "Defensive Fighting",
+                "nameJa": "防御的戦闘",
+                "trigger": "Natural 16+ (or even roll w/ shield)",
+                "triggerJa": "16以上（盾ありなら偶数）",
+                "effect": "Gain a +2 bonus to AC until the end of your next turn.",
+                "effectJa": "次のターンの終了時までACに+2のボーナスを得ます。"
             },
             {
                 "id": "grim-intent",
                 "name": "Grim Intent",
-                "nameJa": "暗い意図",
-                "type": "flexible",
+                "nameJa": "不退転の決意",
                 "trigger": "Natural even miss",
                 "triggerJa": "偶数の外れ",
-                "effect": "The next time you make a melee attack this battle, deal +1d4 extra damage on a hit. At 5th level, +2d4; at 8th level, +3d4.",
-                "effectJa": "この戦闘で次に近接攻撃が命中したとき、+1d4の追加ダメージを与えます。5レベルで+2d4、8レベルで+3d4。"
+                "effect": "The next time you would deal miss damage with a melee attack, add a WEAPON die to that damage.",
+                "effectJa": "次に近接攻撃でミスダメージを与える際、武器ダメージダイス1つを追加します。"
             },
             {
                 "id": "heavy-blows",
                 "name": "Heavy Blows",
                 "nameJa": "重い一撃",
-                "type": "flexible",
-                "trigger": "Natural odd miss",
-                "triggerJa": "奇数の外れ",
-                "effect": "You deal damage equal to your level to the target.",
-                "effectJa": "対象にレベルと同じダメージを与えます。"
+                "trigger": "Natural even miss",
+                "triggerJa": "偶数の外れ",
+                "effect": "You gain a bonus to your miss damage with that attack equal to the escalation die.",
+                "effectJa": "ミスダメージにエスカレーションダイスの値を加算します。"
             },
             {
-                "id": "punish-them",
-                "name": "Punish Them",
-                "nameJa": "制裁",
-                "type": "flexible",
-                "trigger": "Natural 16+",
-                "triggerJa": "16以上の出目",
-                "effect": "The target is dazed until the end of your next turn.",
-                "effectJa": "対象は次のターン終了まで朦朧状態になります。"
+                "id": "precision-attack",
+                "name": "Precision Attack",
+                "nameJa": "精密攻撃",
+                "trigger": "Any hit with a natural 16+",
+                "triggerJa": "16以上の命中",
+                "effect": "You gain a bonus to the damage roll equal to your Dexterity modifier.",
+                "effectJa": "ダメージロールに【敏捷力】修正値を加算します。"
             },
             {
-                "id": "strong-guard",
-                "name": "Strong Guard",
-                "nameJa": "強固な守り",
-                "type": "flexible",
-                "trigger": "Natural even hit",
-                "triggerJa": "偶数の命中",
-                "effect": "A nearby ally gains a +2 bonus to AC until the start of your next turn.",
-                "effectJa": "近くの仲間は次のターン開始まで、ACに+2ボーナスを得ます。"
+                "id": "second-shot",
+                "name": "Second Shot",
+                "nameJa": "セカンドショット",
+                "trigger": "Natural 16+ (Ranged)",
+                "triggerJa": "16以上（遠距離）",
+                "effect": "After this attack, make a basic ranged attack with -4 penalty.",
+                "effectJa": "この攻撃の後、-4のペナルティで基本的な遠距離攻撃をもう一度行えます。"
+            },
+            {
+                "id": "shield-bash",
+                "name": "Shield Bash",
+                "nameJa": "シールドバッシュ",
+                "trigger": "Natural even roll (Shield)",
+                "triggerJa": "偶数の出目（盾）",
+                "effect": "The target pops free from you after the attack.",
+                "effectJa": "攻撃後、対象はあなたから離脱（Pop Free）します。"
+            },
+            {
+                "id": "two-weapon-pressure",
+                "name": "Two-Weapon Pressure",
+                "nameJa": "二刀の重圧",
+                "trigger": "Any miss (Two-weapon)",
+                "triggerJa": "何らかの外れ（二刀流）",
+                "effect": "Deal damage equal to your level to the target.",
+                "effectJa": "対象にレベルに等しいダメージを与えます。"
             }
         ]
     }
