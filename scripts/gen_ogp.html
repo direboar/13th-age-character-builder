@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OGP画像ジェネレーター</title>
+    <style>
+        body {
+            background: #111;
+            color: #eee;
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        canvas {
+            border: 1px solid #444;
+            display: block;
+            margin: 16px 0;
+        }
+
+        a.download {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #c9a84c;
+            color: #111;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>OGP画像ジェネレーター</h2>
+    <canvas id="ogp" width="1200" height="630"></canvas>
+    <a class="download" id="dl" download="ogp.png">PNGをダウンロード</a>
+
+    <script>
+        const canvas = document.getElementById('ogp');
+        const ctx = canvas.getContext('2d');
+        const W = 1200, H = 630;
+
+        // 背景グラデーション
+        const grad = ctx.createLinearGradient(0, 0, 0, H);
+        grad.addColorStop(0, '#1a1a2e');
+        grad.addColorStop(1, '#16213e');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, W, H);
+
+        // ゴールドの枠線
+        ctx.strokeStyle = '#c9a84c';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(20, 20, W - 40, H - 40);
+        ctx.lineWidth = 1;
+        ctx.strokeRect(26, 26, W - 52, H - 52);
+
+        // 中央の装飾ライン
+        ctx.strokeStyle = 'rgba(201,168,76,0.4)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(80, H / 2 + 50);
+        ctx.lineTo(W - 80, H / 2 + 50);
+        ctx.stroke();
+
+        // タイトル「13th Age」
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        // メインタイトル
+        ctx.font = 'bold 110px "Georgia", "Times New Roman", serif';
+        ctx.fillStyle = '#e8c97a';
+        ctx.shadowColor = 'rgba(201,168,76,0.5)';
+        ctx.shadowBlur = 20;
+        ctx.fillText('13th Age', W / 2, H / 2 - 60);
+
+        // サブタイトル
+        ctx.shadowBlur = 0;
+        ctx.font = '400 38px "Georgia", serif';
+        ctx.fillStyle = '#c9a84c';
+        ctx.fillText('Character Builder', W / 2, H / 2 + 20);
+
+        // 区切り線（装飾）
+        ctx.strokeStyle = '#c9a84c';
+        ctx.lineWidth = 1;
+        const lineY = H / 2 - 20;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 220, lineY); ctx.lineTo(W / 2 - 20, lineY); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(W / 2 + 20, lineY); ctx.lineTo(W / 2 + 220, lineY); ctx.stroke();
+
+        // ダイヤ装飾
+        ctx.fillStyle = '#c9a84c';
+        ctx.save();
+        ctx.translate(W / 2, lineY);
+        ctx.rotate(Math.PI / 4);
+        ctx.fillRect(-6, -6, 12, 12);
+        ctx.restore();
+
+        // 日本語サブタイトル
+        ctx.font = '300 22px sans-serif';
+        ctx.fillStyle = 'rgba(220,220,220,0.7)';
+        ctx.fillText('キャラクタービルダー', W / 2, H / 2 + 70);
+
+        // 左右の剣アイコン（シンプルな図形）
+        function drawSword(cx, cy, angle) {
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(angle);
+            ctx.fillStyle = 'rgba(201,168,76,0.3)';
+
+            // 刀身
+            ctx.beginPath();
+            ctx.moveTo(-4, -50);
+            ctx.lineTo(4, -50);
+            ctx.lineTo(2, 30);
+            ctx.lineTo(-2, 30);
+            ctx.closePath();
+            ctx.fill();
+
+            // 刀先
+            ctx.beginPath();
+            ctx.moveTo(-4, -50);
+            ctx.lineTo(4, -50);
+            ctx.lineTo(0, -70);
+            ctx.closePath();
+            ctx.fill();
+
+            // 鍔（ガード）
+            ctx.beginPath();
+            ctx.moveTo(-20, 30);
+            ctx.lineTo(20, 30);
+            ctx.lineTo(16, 38);
+            ctx.lineTo(-16, 38);
+            ctx.closePath();
+            ctx.fill();
+
+            // 柄
+            ctx.fillRect(-3, 38, 6, 25);
+            ctx.restore();
+        }
+
+        drawSword(120, H / 2 - 20, -Math.PI / 8);
+        drawSword(140, H / 2 - 20, Math.PI / 8);
+        drawSword(W - 120, H / 2 - 20, -Math.PI / 8);
+        drawSword(W - 140, H / 2 - 20, Math.PI / 8);
+
+        // ダウンロードリンクを設定
+        document.getElementById('dl').href = canvas.toDataURL('image/png');
+    </script>
+</body>
+
+</html>
